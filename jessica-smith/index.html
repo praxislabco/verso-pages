@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessica Smith — Business Consultant | Verso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Manrope',-apple-system,sans-serif;
+  background:#121210;color:#fff;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+}
+
+/* ═══ HERO IMAGE ═══ */
+.hero-img{
+  width:100%;max-width:480px;position:relative;overflow:hidden;
+}
+.hero-img img{
+  width:100%;height:380px;object-fit:cover;object-position:center 15%;
+  display:block;
+  filter:grayscale(100%) contrast(1.1);
+}
+.hero-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:55%;
+  background:linear-gradient(transparent,#121210);
+}
+
+/* ═══ PROFILE ═══ */
+.profile{
+  width:100%;max-width:480px;padding:0 24px;
+  margin-top:-60px;position:relative;z-index:2;
+  text-align:center;
+}
+.avatar{
+  width:100px;height:100px;border-radius:50%;
+  border:4px solid #121210;
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  margin:0 auto 16px;overflow:hidden;
+  background:#2a2a28;
+}
+.avatar img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(100%) contrast(1.1);
+}
+.name{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:32px;font-weight:400;letter-spacing:-.02em;
+  color:#fff;
+}
+.title{
+  font-size:14px;color:rgba(200,195,180,.5);margin-top:4px;
+  font-weight:400;
+}
+.tagline{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:15px;font-style:italic;
+  color:rgba(200,195,180,.4);margin-top:8px;
+}
+
+/* ═══ STATUS BADGE ═══ */
+.status{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:14px;padding:6px 16px;border-radius:100px;
+  background:rgba(184,151,92,.08);border:1px solid rgba(184,151,92,.15);
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#B8975C;
+  animation:pulse 2s infinite;
+}
+.status-text{
+  font-size:11px;font-weight:600;
+  color:rgba(184,151,92,.7);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
+
+/* ═══ STATS ═══ */
+.stats{
+  display:flex;gap:8px;padding:0 24px;margin-top:20px;
+  width:100%;max-width:480px;
+}
+.stat{
+  flex:1;text-align:center;padding:14px 8px;
+  background:rgba(184,151,92,.04);
+  border:1px solid rgba(184,151,92,.08);
+  border-radius:12px;
+}
+.stat-val{
+  font-size:20px;font-weight:800;color:rgba(184,151,92,.85);
+  letter-spacing:-.02em;
+}
+.stat-lbl{
+  font-size:9px;color:rgba(200,195,180,.3);
+  text-transform:uppercase;letter-spacing:.06em;margin-top:4px;
+}
+
+/* ═══ SECTION LABEL ═══ */
+.section-lbl{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:rgba(184,151,92,.45);
+  padding:0 24px;margin-top:28px;margin-bottom:10px;
+  width:100%;max-width:480px;
+}
+
+/* ═══ SERVICES ═══ */
+.services{
+  display:flex;flex-direction:column;gap:6px;
+  padding:0 24px;width:100%;max-width:480px;
+}
+.service{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;
+  background:rgba(184,151,92,.03);
+  border:1px solid rgba(184,151,92,.06);
+  border-radius:14px;
+  text-decoration:none;color:#fff;
+  transition:all .2s;
+}
+.service:hover{
+  background:rgba(184,151,92,.06);
+  border-color:rgba(184,151,92,.12);
+  transform:translateY(-1px);
+}
+.service-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(184,151,92,.06);border:1px solid rgba(184,151,92,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.service-info{flex:1}
+.service-title{font-size:14px;font-weight:700;color:rgba(255,255,255,.85);}
+.service-desc{font-size:11px;color:rgba(200,195,180,.35);margin-top:2px;}
+.service-tag{
+  font-size:9px;font-weight:700;padding:3px 8px;
+  border-radius:6px;text-transform:uppercase;letter-spacing:.03em;
+  flex-shrink:0;
+}
+
+/* ═══ LINKS ═══ */
+.links{
+  display:flex;flex-direction:column;gap:6px;
+  padding:0 24px;width:100%;max-width:480px;
+}
+.link{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;
+  background:rgba(184,151,92,.03);
+  border:1px solid rgba(184,151,92,.06);
+  border-radius:14px;
+  text-decoration:none;color:#fff;
+  transition:all .2s;
+}
+.link:hover{
+  background:rgba(184,151,92,.06);
+  border-color:rgba(184,151,92,.12);
+  transform:translateY(-1px);
+}
+.link-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(184,151,92,.06);border:1px solid rgba(184,151,92,.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.link-title{font-size:14px;font-weight:700;color:rgba(255,255,255,.85);}
+.link-desc{font-size:11px;color:rgba(200,195,180,.35);margin-top:2px;}
+
+/* ═══ CTA ═══ */
+.cta-wrap{
+  padding:0 24px;margin-top:24px;width:100%;max-width:480px;
+}
+.cta{
+  display:block;width:100%;padding:16px;
+  text-align:center;border-radius:14px;
+  background:linear-gradient(135deg,#B8975C,#8A6E35);
+  font-family:'Manrope',sans-serif;
+  font-size:14px;font-weight:800;color:#121210;
+  text-transform:uppercase;letter-spacing:.04em;
+  text-decoration:none;
+  box-shadow:0 8px 32px rgba(184,151,92,.15);
+  transition:all .25s;
+}
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(184,151,92,.25);
+}
+
+/* ═══ TRUST BADGES ═══ */
+.trust{
+  display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  padding:0 24px;margin-top:20px;width:100%;max-width:480px;
+}
+.trust-badge{
+  display:flex;align-items:center;gap:5px;
+  padding:6px 12px;border-radius:8px;
+  background:rgba(184,151,92,.04);border:1px solid rgba(184,151,92,.06);
+  font-size:10px;font-weight:600;color:rgba(200,195,180,.4);
+}
+
+/* ═══ SOCIAL ═══ */
+.social{
+  display:flex;gap:12px;justify-content:center;
+  padding:0 24px;margin-top:24px;width:100%;max-width:480px;
+}
+.social a{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(184,151,92,.04);border:1px solid rgba(184,151,92,.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;text-decoration:none;
+  transition:all .2s;
+}
+.social a:hover{
+  background:rgba(184,151,92,.08);
+  border-color:rgba(184,151,92,.15);
+  transform:translateY(-2px);
+}
+
+/* ═══ FOOTER ═══ */
+.footer{
+  text-align:center;padding:32px 24px 24px;
+  font-size:10px;color:rgba(200,195,180,.12);
+  width:100%;max-width:480px;
+}
+
+/* ═══ CREDENTIALS TICKER ═══ */
+.creds{
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+  padding:0 24px;margin-top:16px;width:100%;max-width:480px;
+}
+.cred{
+  font-size:10px;font-weight:600;
+  padding:4px 10px;border-radius:100px;
+  background:rgba(184,151,92,.05);
+  color:rgba(184,151,92,.5);
+}
+</style>
+</head>
+<body>
+
+<!-- HERO IMAGE -->
+<div class="hero-img">
+  <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1748379661/u3873719616_create_an_email_sitting_at_a_computer_with_a_smil_16d25887-2f4e-4b15-b679-578ac43c446f_2_s34jf4.png" alt="Jessica Smith">
+</div>
+
+<!-- PROFILE -->
+<div class="profile">
+  <div class="avatar">
+    <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1748379661/u3873719616_create_an_email_sitting_at_a_computer_with_a_smil_16d25887-2f4e-4b15-b679-578ac43c446f_2_s34jf4.png" alt="Jessica Smith">
+  </div>
+  <div class="name">Jessica Smith</div>
+  <div class="title">Business Strategy Consultant</div>
+  <div class="tagline">"Helping founders turn chaos into clarity."</div>
+  <div class="status">
+    <div class="status-dot"></div>
+    <span class="status-text">Accepting New Clients</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-val">200+</div><div class="stat-lbl">Clients</div></div>
+  <div class="stat"><div class="stat-val">8yr</div><div class="stat-lbl">Experience</div></div>
+  <div class="stat"><div class="stat-val">4.9★</div><div class="stat-lbl">Rating</div></div>
+</div>
+
+<!-- CREDENTIALS -->
+<div class="creds">
+  <span class="cred">MBA · Wharton</span>
+  <span class="cred">Certified Coach (ICF)</span>
+  <span class="cred">Forbes 30 Under 30</span>
+</div>
+
+<!-- SERVICES -->
+<div class="section-lbl">📋 Services</div>
+<div class="services">
+  <a href="#" class="service">
+    <div class="service-icon">🎯</div>
+    <div class="service-info">
+      <div class="service-title">Strategy Session</div>
+      <div class="service-desc">60-min deep dive into your business</div>
+    </div>
+    <span class="service-tag" style="background:rgba(184,151,92,.1);color:#B8975C;">$250</span>
+  </a>
+  <a href="#" class="service">
+    <div class="service-icon">📊</div>
+    <div class="service-info">
+      <div class="service-title">Business Audit</div>
+      <div class="service-desc">Full operations & growth review</div>
+    </div>
+    <span class="service-tag" style="background:rgba(184,151,92,.1);color:#B8975C;">$500</span>
+  </a>
+  <a href="#" class="service">
+    <div class="service-icon">🚀</div>
+    <div class="service-info">
+      <div class="service-title">90-Day Growth Plan</div>
+      <div class="service-desc">Quarterly roadmap with weekly check-ins</div>
+    </div>
+    <span class="service-tag" style="background:rgba(184,151,92,.1);color:#B8975C;">$1,500</span>
+  </a>
+  <a href="#" class="service">
+    <div class="service-icon">💎</div>
+    <div class="service-info">
+      <div class="service-title">VIP Day</div>
+      <div class="service-desc">Full-day intensive — strategy, ops, launch</div>
+    </div>
+    <span class="service-tag" style="background:rgba(30,215,96,.1);color:#1ED760;">Popular</span>
+  </a>
+</div>
+
+<!-- LINKS -->
+<div class="section-lbl">🔗 Quick Links</div>
+<div class="links">
+  <a href="#" class="link">
+    <div class="link-icon">📅</div>
+    <div><div class="link-title">Book a Free Discovery Call</div><div class="link-desc">15 min — see if we're a fit</div></div>
+  </a>
+  <a href="#" class="link">
+    <div class="link-icon">📰</div>
+    <div><div class="link-title">Weekly Newsletter</div><div class="link-desc">Business tips every Tuesday</div></div>
+  </a>
+  <a href="#" class="link">
+    <div class="link-icon">🎙️</div>
+    <div><div class="link-title">The Clarity Podcast</div><div class="link-desc">Strategy breakdowns for founders</div></div>
+  </a>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <a href="#" class="cta">📅 Book Your Consultation</a>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust">
+  <div class="trust-badge">✓ 100+ 5-star reviews</div>
+  <div class="trust-badge">✓ Free cancellation</div>
+  <div class="trust-badge">✓ NDA included</div>
+</div>
+
+<!-- SOCIAL -->
+<div class="social">
+  <a href="#">📸</a>
+  <a href="#">💼</a>
+  <a href="#">🐦</a>
+  <a href="#">🎵</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">myverso.co</div>
+
+</body>
+</html>
