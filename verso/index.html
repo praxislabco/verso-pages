@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Verso — The First Link-in-Bio Design Service</title>
+<meta name="description" content="Custom link-in-bio pages, designed for you. Not a template — hand-built by a real designer. From $99.">
+<meta property="og:title" content="Verso — Custom Link-in-Bio Pages">
+<meta property="og:description" content="We design your link page. You just show up. Custom pages from $99.">
+<meta property="og:image" content="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771944449/Gemini_Generated_Image_2suqr52suqr52suq_cleanup_rsdkbh.png">
+<meta property="og:url" content="https://myverso.page/verso">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8F6F0;
+  --bg2: #F0EDE4;
+  --bg3: #E8E4D9;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255,255,255,.65);
+  --text: #1A1815;
+  --text2: #5C584E;
+  --text3: #9C978A;
+  --text4: #C4BFAE;
+  --gold: #B8975C;
+  --gold2: #A07D3F;
+  --gold3: #8A6B30;
+  --gold-light: rgba(184,151,92,.08);
+  --gold-border: rgba(184,151,92,.2);
+  --gold-glow: rgba(184,151,92,.12);
+  --navy: #1A1815;
+  --border: #E0DCD2;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Manrope', -apple-system, sans-serif;
+  --radius: 14px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{
+  font-family:var(--sans);color:var(--text);
+  min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse at 30% 10%, rgba(184,151,92,.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(184,151,92,.03) 0%, transparent 50%);
+}
+
+/* ═══ TEXTURE OVERLAY ═══ */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.page{width:100%;max-width:480px;position:relative;z-index:1;padding:0 16px 40px}
+
+/* ═══ HERO BANNER ═══ */
+.hero{
+  width:calc(100% + 32px);margin-left:-16px;margin-top:0;
+  position:relative;overflow:hidden;
+  aspect-ratio:1/1;max-height:420px;
+}
+.hero-img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+.hero-gradient{
+  position:absolute;bottom:0;left:0;right:0;height:60%;
+  background:linear-gradient(to top, var(--bg) 0%, rgba(248,246,240,.6) 40%, transparent 100%);
+}
+.hero-gradient-top{
+  position:absolute;top:0;left:0;right:0;height:30%;
+  background:linear-gradient(to bottom, rgba(248,246,240,.3) 0%, transparent 100%);
+}
+
+/* ═══ PROFILE ═══ */
+.profile{
+  display:flex;flex-direction:column;align-items:center;
+  margin-top:-56px;position:relative;z-index:5;
+}
+.avatar-ring{
+  width:96px;height:96px;border-radius:22px;
+  padding:3px;
+  background:linear-gradient(135deg, var(--gold), var(--gold3), var(--gold));
+  box-shadow:0 8px 32px rgba(0,0,0,.12), 0 0 0 4px var(--bg);
+}
+.avatar{
+  width:100%;height:100%;border-radius:19px;
+  object-fit:cover;background:var(--bg2);
+  display:block;
+}
+.name{
+  font-family:var(--serif);font-size:28px;font-weight:400;
+  letter-spacing:-.03em;margin-top:14px;color:var(--navy);
+  text-align:center;
+}
+.handle{
+  font-size:13px;font-weight:500;color:var(--gold2);
+  margin-top:2px;letter-spacing:.01em;
+}
+.bio{
+  font-size:13.5px;color:var(--text2);line-height:1.6;
+  text-align:center;max-width:340px;margin:10px auto 0;
+}
+.bio em{font-style:italic;color:var(--gold2);font-family:var(--serif);font-size:14.5px}
+
+/* ═══ BADGE ═══ */
+.brand-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border-radius:100px;margin-top:12px;
+  background:var(--gold-light);border:1px solid var(--gold-border);
+  font-size:10px;font-weight:700;color:var(--gold2);
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.brand-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
+
+/* ═══ STATS ═══ */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  margin-top:20px;width:100%;
+}
+.stat{
+  text-align:center;padding:14px 8px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;
+  transition:all .3s;
+}
+.stat:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04)}
+.stat-val{
+  font-family:var(--serif);font-size:22px;font-weight:400;
+  color:var(--navy);letter-spacing:-.02em;line-height:1;
+}
+.stat-label{
+  font-size:9px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--text3);margin-top:4px;
+}
+
+/* ═══ SECTION DIVIDER ═══ */
+.divider{
+  display:flex;align-items:center;gap:12px;
+  margin:28px 0 16px;width:100%;
+}
+.divider-line{flex:1;height:1px;background:var(--border)}
+.divider-label{
+  font-size:9px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--text4);white-space:nowrap;
+}
+
+/* ═══ LINKS ═══ */
+.links{display:flex;flex-direction:column;gap:8px;width:100%}
+
+.link{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);
+  text-decoration:none;color:var(--text);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  position:relative;overflow:hidden;
+}
+.link::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gold-light),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.link:hover{
+  border-color:var(--gold-border);transform:translateY(-2px);
+  box-shadow:0 8px 28px rgba(0,0,0,.05);
+}
+.link:hover::before{opacity:1}
+.link-icon{
+  width:42px;height:42px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;position:relative;z-index:2;
+}
+.link-content{flex:1;position:relative;z-index:2;min-width:0}
+.link-title{font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--navy)}
+.link-desc{font-size:11px;color:var(--text3);margin-top:1px;font-weight:400}
+.link-arrow{
+  font-size:14px;color:var(--text4);transition:all .3s;
+  position:relative;z-index:2;flex-shrink:0;
+}
+.link:hover .link-arrow{color:var(--gold2);transform:translateX(3px)}
+
+/* ═══ CTA LINK (PRIMARY) ═══ */
+.link.cta{
+  background:var(--navy);border-color:var(--navy);
+}
+.link.cta::before{
+  background:linear-gradient(135deg,rgba(184,151,92,.15),transparent);
+}
+.link.cta .link-icon{background:rgba(255,255,255,.08)}
+.link.cta .link-title{color:#fff}
+.link.cta .link-desc{color:rgba(255,255,255,.45)}
+.link.cta .link-arrow{color:rgba(255,255,255,.3)}
+.link.cta:hover{
+  background:#2a2520;border-color:#2a2520;
+  box-shadow:0 12px 36px rgba(0,0,0,.15);
+}
+.link.cta:hover .link-arrow{color:var(--gold);transform:translateX(3px)}
+
+/* ═══ FEATURED LINK ═══ */
+.link.featured{
+  border-color:var(--gold-border);
+  background:linear-gradient(135deg,rgba(184,151,92,.04),var(--surface));
+}
+.link.featured .link-icon{background:var(--gold-light);border:1px solid var(--gold-border)}
+
+/* ═══ PORTFOLIO PREVIEW ═══ */
+.portfolio-strip{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  margin-top:16px;width:100%;
+}
+.portfolio-item{text-decoration:none;color:var(--text);display:block;transition:all .4s}
+.portfolio-item:hover{transform:translateY(-4px)}
+.portfolio-item:hover .pf-phone{box-shadow:0 16px 48px rgba(0,0,0,.25)}
+.pf-phone{
+  background:#0a0a0a;border-radius:20px;padding:5px;
+  box-shadow:0 8px 32px rgba(0,0,0,.15);
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.pf-iframe-wrap{
+  border-radius:16px;overflow:hidden;
+  position:relative;width:100%;aspect-ratio:9/16;
+}
+.pf-iframe-wrap iframe{
+  width:375px;height:900px;border:none;pointer-events:none;
+  transform-origin:top left;position:absolute;top:0;left:0;
+}
+.pf-iframe-wrap .pf-overlay{position:absolute;inset:0;z-index:3;cursor:pointer}
+.pf-badge{
+  position:absolute;top:8px;right:8px;z-index:5;
+  font-size:8px;font-weight:700;padding:3px 8px;border-radius:4px;
+  text-transform:uppercase;letter-spacing:.04em;
+  backdrop-filter:blur(4px);
+}
+.pf-badge.video{background:rgba(200,16,46,.15);color:#ff4466;border:1px solid rgba(200,16,46,.25)}
+.pf-badge.athlete{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12)}
+.pf-badge.d3{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12)}
+.pf-name{font-size:12px;font-weight:700;letter-spacing:-.01em;margin-top:10px;text-align:center}
+.pf-role{font-size:10px;color:var(--text3);text-align:center;margin-top:1px}
+
+/* ═══ SHARE BUTTON ═══ */
+.share-bar{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:20px;width:100%;
+}
+.share-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 24px;border-radius:100px;
+  background:var(--surface);border:1px solid var(--border);
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  color:var(--text2);cursor:pointer;
+  transition:all .3s;letter-spacing:-.01em;
+}
+.share-btn:hover{border-color:var(--gold-border);color:var(--gold2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.share-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.share-toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--navy);color:#fff;
+  padding:12px 24px;border-radius:100px;
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  box-shadow:0 12px 36px rgba(0,0,0,.2);
+  z-index:999;opacity:0;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  pointer-events:none;
+}
+.share-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ═══ SOCIAL ═══ */
+.social{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-top:24px;
+}
+.social-btn{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface);border:1px solid var(--border);
+  text-decoration:none;transition:all .3s;
+}
+.social-btn:hover{
+  border-color:var(--gold-border);transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+.social-btn svg{width:18px;height:18px;fill:var(--text2)}
+.social-btn:hover svg{fill:var(--gold2)}
+
+/* ═══ FOOTER ═══ */
+.page-footer{
+  text-align:center;margin-top:32px;padding-top:20px;
+  border-top:1px solid var(--border);
+}
+.footer-brand{font-size:11px;color:var(--text4);margin-bottom:4px}
+.footer-brand a{color:var(--gold2);text-decoration:none;font-weight:600}
+.footer-brand a:hover{text-decoration:underline}
+.footer-sub{font-size:10px;color:var(--text4)}
+.footer-sub a{color:var(--text3);text-decoration:none}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:fadeUp .5s ease forwards}
+.anim-d1{animation-delay:.05s}
+.anim-d2{animation-delay:.1s}
+.anim-d3{animation-delay:.15s}
+.anim-d4{animation-delay:.2s}
+.anim-d5{animation-delay:.25s}
+.anim-d6{animation-delay:.3s}
+.anim-d7{animation-delay:.35s}
+.anim-d8{animation-delay:.4s}
+.anim-d9{animation-delay:.45s}
+.anim-d10{animation-delay:.5s}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:480px){
+  .page{padding:0 12px 32px}
+  .hero{width:calc(100% + 24px);margin-left:-12px}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO BANNER -->
+  <div class="hero anim">
+    <img
+      src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771944449/Gemini_Generated_Image_2suqr52suqr52suq_cleanup_rsdkbh.png"
+      alt="Verso — We design your link page"
+      class="hero-img"
+    >
+    <div class="hero-gradient"></div>
+    <div class="hero-gradient-top"></div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="avatar-ring anim anim-d1">
+      <img
+        src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771941087/ChatGPT_Image_Feb_23_2026_10_22_50_PM_eswd66.png"
+        alt="Verso"
+        class="avatar"
+      >
+    </div>
+    <div class="name anim anim-d2">Verso</div>
+    <div class="handle anim anim-d2">@myversopage</div>
+    <div class="bio anim anim-d3">
+      The first link-in-bio <em>design service.</em><br>
+      Custom pages that match your brand — not a template with your name pasted in.
+    </div>
+    <div class="brand-badge anim anim-d3">A Praxis Lab Product</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats anim anim-d4">
+    <div class="stat">
+      <div class="stat-val">$99</div>
+      <div class="stat-label">Starting at</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">48hr</div>
+      <div class="stat-label">Delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">∞</div>
+      <div class="stat-label">Revisions</div>
+    </div>
+  </div>
+
+  <!-- PRIMARY CTA -->
+  <div class="divider anim anim-d5">
+    <div class="divider-line"></div>
+    <div class="divider-label">Get Started</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://myverso.co/#pricing" target="_blank" class="link cta anim anim-d5">
+      <div class="link-icon">✦</div>
+      <div class="link-content">
+        <div class="link-title">Get Your Page Designed</div>
+        <div class="link-desc">Custom or Premium — from $99</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://myverso.co/verso-app" target="_blank" class="link featured anim anim-d6">
+      <div class="link-icon" style="background:var(--gold-light);border:1px solid var(--gold-border);">⚡</div>
+      <div class="link-content">
+        <div class="link-title">Free AI Page Builder</div>
+        <div class="link-desc">Generate your page in 30 seconds — no credit card</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="divider anim anim-d7">
+    <div class="divider-line"></div>
+    <div class="divider-label">Portfolio — Real Pages</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="portfolio-strip anim anim-d7">
+    <a class="portfolio-item" href="https://myverso.page/jessica-smith" target="_blank">
+      <div class="pf-phone">
+        <div class="pf-iframe-wrap">
+          <iframe scrolling="no" src="https://myverso.page/jessica-smith" loading="lazy" tabindex="-1"></iframe>
+          <div class="pf-overlay"></div>
+        </div>
+        <span class="pf-badge" style="background:rgba(184,151,92,.12);color:#A07D3F;border:1px solid rgba(184,151,92,.2);">Pro</span>
+      </div>
+      <div class="pf-name">Jessica Smith</div>
+      <div class="pf-role">Business Consultant</div>
+    </a>
+    <a class="portfolio-item" href="https://myverso.page/kenny-simmons" target="_blank">
+      <div class="pf-phone">
+        <div class="pf-iframe-wrap">
+          <iframe scrolling="no" src="https://myverso.page/kenny-simmons" loading="lazy" tabindex="-1"></iframe>
+          <div class="pf-overlay"></div>
+        </div>
+        <span class="pf-badge d3">D3</span>
+      </div>
+      <div class="pf-name">Kenny Simmons</div>
+      <div class="pf-role">Wooster Football · QB</div>
+    </a>
+    <a class="portfolio-item" href="https://myverso.page/javon-salazar" target="_blank">
+      <div class="pf-phone">
+        <div class="pf-iframe-wrap">
+          <iframe scrolling="no" src="https://myverso.page/javon-salazar" loading="lazy" tabindex="-1"></iframe>
+          <div class="pf-overlay"></div>
+        </div>
+        <span class="pf-badge athlete">NAIA</span>
+      </div>
+      <div class="pf-name">Javon Salazar</div>
+      <div class="pf-role">Indiana Tech Lacrosse</div>
+    </a>
+    <a class="portfolio-item" href="https://myverso.page/kmv" target="_blank">
+      <div class="pf-phone">
+        <div class="pf-iframe-wrap">
+          <iframe scrolling="no" src="https://myverso.page/kmv" loading="lazy" tabindex="-1"></iframe>
+          <div class="pf-overlay"></div>
+        </div>
+        <span class="pf-badge video">Video</span>
+      </div>
+      <div class="pf-name">KMV On Tha Trax</div>
+      <div class="pf-role">Memphis Artist</div>
+    </a>
+  </div>
+
+  <!-- MORE LINKS -->
+  <div class="divider anim anim-d8">
+    <div class="divider-line"></div>
+    <div class="divider-label">Learn More</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://myverso.co" target="_blank" class="link anim anim-d8">
+      <div class="link-icon" style="background:var(--bg2);">🌐</div>
+      <div class="link-content">
+        <div class="link-title">myverso.co</div>
+        <div class="link-desc">Our website — portfolio, pricing, and everything Verso</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://myverso.co/#how" target="_blank" class="link anim anim-d8">
+      <div class="link-icon" style="background:var(--bg2);">📋</div>
+      <div class="link-content">
+        <div class="link-title">How It Works</div>
+        <div class="link-desc">Share your brand → We design → You go live in 48hrs</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://myverso.co/#portfolio" target="_blank" class="link anim anim-d9">
+      <div class="link-icon" style="background:var(--bg2);">📱</div>
+      <div class="link-content">
+        <div class="link-title">View Full Portfolio</div>
+        <div class="link-desc">Athletes, creators, and professionals using Verso</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://myverso.co/support" target="_blank" class="link anim anim-d9">
+      <div class="link-icon" style="background:var(--bg2);">💬</div>
+      <div class="link-content">
+        <div class="link-title">Support & Help</div>
+        <div class="link-desc">FAQ, page updates, and contact us</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="/cdn-cgi/l/email-protection#0169646d6d6e416c78776473726e2f626e" class="link anim anim-d10">
+      <div class="link-icon" style="background:var(--bg2);">✉️</div>
+      <div class="link-content">
+        <div class="link-title"><span class="__cf_email__" data-cfemail="2b434e4747446b46525d4e595844054844">[email&#160;protected]</span></div>
+        <div class="link-desc">Questions? Reach out — we respond within 24 hours</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social anim anim-d10">
+    <a href="https://instagram.com/myversopage" target="_blank" class="social-btn" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://tiktok.com/@myversopage" target="_blank" class="social-btn" title="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17v-3.45a4.85 4.85 0 01-2.58-.74v-4.29h2.58z"/></svg>
+    </a>
+    <a href="https://x.com/myversopage" target="_blank" class="social-btn" title="X / Twitter">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar anim anim-d10">
+    <button class="share-btn" onclick="sharePage()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share This Page
+    </button>
+    <button class="share-btn" onclick="copyLink()">
+      <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      Copy Link
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer anim anim-d10">
+    <div class="footer-brand">Powered by <a href="https://myverso.co" target="_blank">Verso</a></div>
+    <div class="footer-sub">A <a href="https://praxislab.co" target="_blank">Praxis Lab</a> product</div>
+  </div>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><div class="share-toast" id="shareToast">✓ Link copied to clipboard</div>
+
+<script>
+/* Scale portfolio iframes */
+function scalePortfolio(){
+  document.querySelectorAll('.pf-iframe-wrap iframe').forEach(function(iframe){
+    var w=iframe.parentElement.offsetWidth;
+    iframe.style.transform='scale('+(w/375)+')';
+  });
+}
+window.addEventListener('load',scalePortfolio);
+window.addEventListener('resize',scalePortfolio);
+setTimeout(scalePortfolio,200);
+setTimeout(scalePortfolio,600);
+
+/* Share / Copy */
+var pageUrl='https://myverso.page/verso';
+var pageTitle='Verso — Custom Link-in-Bio Pages';
+
+function sharePage(){
+  if(navigator.share){
+    navigator.share({title:pageTitle,url:pageUrl}).catch(function(){});
+  } else {
+    copyLink();
+  }
+}
+function copyLink(){
+  navigator.clipboard.writeText(pageUrl).then(function(){
+    showToast('✓ Link copied to clipboard');
+  }).catch(function(){
+    showToast('myverso.page/verso');
+  });
+}
+function showToast(msg){
+  var t=document.getElementById('shareToast');
+  t.textContent=msg;
+  t.classList.add('visible');
+  setTimeout(function(){t.classList.remove('visible')},2200);
+}
+</script>
+
+</body>
+</html>
