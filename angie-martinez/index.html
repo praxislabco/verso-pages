@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Angie Martinez — The Voice of New York</title>
+<meta name="description" content="Radio Hall of Famer. NYT Bestselling Author. Host & Creator of the IRL Podcast. The Voice of New York.">
+<meta property="og:title" content="Angie Martinez — The Voice of New York">
+<meta property="og:description" content="Radio. Podcast. Author. Culture. All things Angie — in one place.">
+<meta property="og:url" content="https://myverso.page/angie-martinez">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1318;
+  --bg2: #151B22;
+  --bg3: #1B232C;
+  --surface: rgba(255,255,255,.04);
+  --surface2: rgba(255,255,255,.06);
+  --surface3: rgba(255,255,255,.08);
+  --text: #F2EDE4;
+  --text2: rgba(242,237,228,.6);
+  --text3: rgba(242,237,228,.35);
+  --text4: rgba(242,237,228,.15);
+  --denim: #3B5C82;
+  --denim-deep: #2A4563;
+  --denim-light: rgba(59,92,130,.15);
+  --denim-border: rgba(59,92,130,.25);
+  --honey: #D4A24E;
+  --honey2: #C49238;
+  --honey3: #B0832E;
+  --honey-glow: rgba(212,162,78,.12);
+  --honey-border: rgba(212,162,78,.2);
+  --honey-soft: rgba(212,162,78,.06);
+  --cream: #F2EDE4;
+  --cream-soft: rgba(242,237,228,.06);
+  --sage: #8BA888;
+  --sage-soft: rgba(139,168,136,.1);
+  --sage-border: rgba(139,168,136,.2);
+  --red: #C0392B;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--sans);color:var(--text);
+  background:var(--bg);min-height:100vh;min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;
+  background-image:
+    radial-gradient(ellipse at 30% 10%, rgba(59,92,130,.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(212,162,78,.04) 0%, transparent 50%);
+}
+
+/* Grain */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page{width:100%;max-width:480px;position:relative;z-index:1;padding:0 16px 40px}
+
+/* ═══ HERO ═══ */
+.hero{
+  width:calc(100% + 32px);margin-left:-16px;
+  position:relative;overflow:hidden;
+  height:380px;
+}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-gradient{
+  position:absolute;bottom:0;left:0;right:0;height:70%;
+  background:linear-gradient(to top, var(--bg) 0%, rgba(15,19,24,.7) 50%, transparent 100%);
+}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, transparent 40%, rgba(15,19,24,.6) 100%);
+}
+/* Warm light leak */
+.hero-light{
+  position:absolute;bottom:20%;left:-10%;width:60%;height:40%;
+  background:radial-gradient(ellipse, rgba(212,162,78,.1) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* ═══ PROFILE ═══ */
+.profile{display:flex;flex-direction:column;align-items:center;margin-top:-64px;position:relative;z-index:5}
+.avatar-ring{
+  width:108px;height:108px;border-radius:50%;padding:3px;
+  background:linear-gradient(135deg, var(--honey), var(--denim), var(--honey));
+  box-shadow:0 0 40px rgba(59,92,130,.2), 0 8px 32px rgba(0,0,0,.4);
+}
+.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;background:var(--bg2)}
+
+.verified{
+  display:inline-flex;align-items:center;gap:5px;margin-top:12px;
+  font-size:10px;font-weight:700;color:var(--honey);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.verified svg{width:14px;height:14px;fill:var(--honey)}
+
+.name{
+  font-family:var(--serif);font-size:34px;font-weight:900;
+  letter-spacing:-.02em;margin-top:6px;color:var(--text);
+  text-align:center;text-transform:uppercase;
+}
+.tagline{
+  font-family:var(--serif);font-size:16px;font-weight:400;font-style:italic;
+  color:var(--honey);margin-top:2px;letter-spacing:.01em;
+}
+.bio{
+  font-size:13px;color:var(--text2);line-height:1.65;
+  text-align:center;max-width:340px;margin:12px auto 0;
+}
+
+/* ═══ ACCOLADES ═══ */
+.accolades{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px;
+  margin-top:16px;
+}
+.accolade{
+  font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 12px;border-radius:100px;
+  color:var(--text3);
+  background:var(--surface);border:1px solid var(--text4);
+  white-space:nowrap;
+}
+.accolade.gold{color:var(--honey);background:var(--honey-soft);border-color:var(--honey-border)}
+.accolade.denim{color:var(--denim);background:var(--denim-light);border-color:var(--denim-border)}
+
+/* ═══ STATS ═══ */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+  margin-top:20px;width:100%;
+}
+.stat{
+  text-align:center;padding:16px 8px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.05);
+  border-radius:14px;transition:all .3s;
+}
+.stat:hover{border-color:var(--honey-border);background:var(--honey-soft)}
+.stat-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.stat-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:3px}
+
+/* ═══ DIVIDER ═══ */
+.divider{display:flex;align-items:center;gap:12px;margin:28px 0 14px;width:100%}
+.divider-line{flex:1;height:1px;background:rgba(255,255,255,.06)}
+.divider-dot{width:4px;height:4px;border-radius:50%;background:var(--denim)}
+.divider-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);white-space:nowrap}
+
+/* ═══ LINKS ═══ */
+.links{display:flex;flex-direction:column;gap:8px;width:100%}
+
+.link{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.05);
+  border-radius:14px;text-decoration:none;color:var(--text);
+  transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;
+}
+.link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--honey-soft),transparent);opacity:0;transition:opacity .3s}
+.link:hover{border-color:var(--honey-border);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.link:hover::before{opacity:1}
+.link-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;position:relative;z-index:2;
+}
+.link-content{flex:1;position:relative;z-index:2;min-width:0}
+.link-title{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.link-desc{font-size:11px;color:var(--text3);margin-top:1px}
+.link-arrow{font-size:14px;color:var(--text4);transition:all .3s;z-index:2;flex-shrink:0}
+.link:hover .link-arrow{color:var(--honey);transform:translateX(3px)}
+
+/* CTA */
+.link.cta{background:linear-gradient(135deg,var(--denim-deep),var(--denim));border-color:var(--denim)}
+.link.cta .link-title{color:var(--cream)}
+.link.cta .link-desc{color:rgba(242,237,228,.45)}
+.link.cta .link-icon{background:rgba(255,255,255,.1)}
+.link.cta .link-arrow{color:rgba(255,255,255,.3)}
+.link.cta:hover{box-shadow:0 12px 40px rgba(59,92,130,.3);transform:translateY(-3px)}
+.link.cta:hover .link-arrow{color:var(--honey);transform:translateX(3px)}
+
+/* Featured */
+.link.featured{border-color:var(--honey-border);background:var(--honey-soft)}
+
+/* Live badge */
+.live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--red);
+  display:inline-block;margin-right:4px;
+  animation:livePulse 1.5s ease infinite;
+}
+@keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(192,57,43,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(192,57,43,0)}}
+
+/* ═══ NOW PLAYING ═══ */
+.now-playing{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;margin-top:8px;width:100%;
+  background:var(--surface2);border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;
+}
+.np-bars{display:flex;align-items:flex-end;gap:2px;width:16px;height:16px;flex-shrink:0}
+.np-bar{width:3px;background:var(--denim);border-radius:1px;animation:eqBar 1s ease-in-out infinite}
+.np-bar:nth-child(1){height:6px;animation-delay:0s}
+.np-bar:nth-child(2){height:12px;animation-delay:.15s}
+.np-bar:nth-child(3){height:8px;animation-delay:.3s}
+.np-bar:nth-child(4){height:14px;animation-delay:.1s}
+@keyframes eqBar{0%,100%{height:4px}50%{height:16px}}
+.np-text{flex:1;min-width:0}
+.np-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--honey)}
+.np-title{font-size:12px;font-weight:600;color:var(--text2);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ═══ QUOTE ═══ */
+.quote-card{
+  padding:24px 22px;margin-top:8px;width:100%;
+  background:var(--surface);border:1px solid rgba(255,255,255,.05);
+  border-radius:14px;text-align:center;
+  border-left:3px solid var(--denim);
+}
+.quote-text{
+  font-family:var(--serif);font-size:15px;font-style:italic;
+  color:var(--text2);line-height:1.6;
+}
+.quote-author{
+  font-size:10px;font-weight:600;color:var(--text3);margin-top:10px;
+  letter-spacing:.04em;text-transform:uppercase;
+}
+
+/* ═══ SOCIAL ═══ */
+.social{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:24px}
+.social-btn{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface);border:1px solid rgba(255,255,255,.06);
+  text-decoration:none;transition:all .3s;
+}
+.social-btn:hover{border-color:var(--honey-border);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.social-btn svg{width:18px;height:18px;fill:var(--text2)}
+.social-btn:hover svg{fill:var(--honey)}
+
+/* ═══ SHARE ═══ */
+.share-bar{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px}
+.share-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 24px;border-radius:100px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.06);
+  font-family:var(--sans);font-size:13px;font-weight:600;
+  color:var(--text2);cursor:pointer;transition:all .3s;
+}
+.share-btn:hover{border-color:var(--honey-border);color:var(--honey)}
+.share-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.share-toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--denim);color:var(--cream);
+  padding:12px 24px;border-radius:100px;
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  box-shadow:0 12px 36px rgba(0,0,0,.4);z-index:999;opacity:0;
+  transition:all .35s cubic-bezier(.4,0,.2,1);pointer-events:none;
+}
+.share-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ═══ FOOTER ═══ */
+.page-footer{text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-brand{font-size:11px;color:var(--text4)}
+.footer-brand a{color:var(--honey);text-decoration:none;font-weight:600}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.anim{opacity:0;animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}
+.d4{animation-delay:.2s}.d5{animation-delay:.25s}.d6{animation-delay:.3s}
+.d7{animation-delay:.35s}.d8{animation-delay:.4s}.d9{animation-delay:.45s}
+.d10{animation-delay:.5s}.d11{animation-delay:.55s}.d12{animation-delay:.6s}
+
+@media(max-width:480px){
+  .page{padding:0 12px 32px}
+  .hero{width:calc(100% + 24px);margin-left:-12px}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero anim">
+    <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771947702/Angie_kdhbz2.jpg" alt="Angie Martinez" class="hero-img">
+    <div class="hero-gradient"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-light"></div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="avatar-ring anim d1">
+      <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771947702/Angie_kdhbz2.jpg" alt="Angie Martinez" class="avatar">
+    </div>
+
+    <div class="verified anim d2">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Verified
+    </div>
+
+    <div class="name anim d2">Angie Martinez</div>
+    <div class="tagline anim d3">The Voice of New York</div>
+
+    <div class="bio anim d3">
+      Radio Hall of Famer. NYT Bestselling Author. Grammy-Nominated Artist. Host & Creator of the IRL Podcast. Power 105.1.
+    </div>
+
+    <div class="accolades anim d4">
+      <span class="accolade gold">Radio Hall of Fame</span>
+      <span class="accolade gold">Marconi Award</span>
+      <span class="accolade">NYT Bestseller</span>
+      <span class="accolade">Grammy Nominated</span>
+      <span class="accolade denim">Roc Nation</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats anim d4">
+    <div class="stat">
+      <div class="stat-val">1M+</div>
+      <div class="stat-label">Followers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">25+</div>
+      <div class="stat-label">Years On Air</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">2020</div>
+      <div class="stat-label">Hall of Fame</div>
+    </div>
+  </div>
+
+  <!-- NOW PLAYING -->
+  <div class="now-playing anim d5">
+    <div class="np-bars">
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+    </div>
+    <div class="np-text">
+      <div class="np-label">Now Playing · IRL Podcast</div>
+      <div class="np-title">New episodes every week on YouTube & all platforms</div>
+    </div>
+  </div>
+
+  <!-- PRIMARY -->
+  <div class="divider anim d5">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-label">Listen & Watch</div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://www.youtube.com/@angiemartinezIRL" target="_blank" class="link cta anim d5">
+      <div class="link-icon">▶</div>
+      <div class="link-content">
+        <div class="link-title">IRL Podcast — YouTube</div>
+        <div class="link-desc">Full video episodes · New every week</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://podcasts.apple.com/us/podcast/angie-martinez-irl/id1633466636" target="_blank" class="link featured anim d6">
+      <div class="link-icon" style="background:var(--honey-soft);border:1px solid var(--honey-border);">🎙</div>
+      <div class="link-content">
+        <div class="link-title">IRL Podcast — Apple</div>
+        <div class="link-desc">Subscribe & listen on Apple Podcasts</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://open.spotify.com/show/1zfSzSLWwhGwwKJu4JZNjQ" target="_blank" class="link anim d6">
+      <div class="link-icon" style="background:rgba(30,215,96,.08);">🎧</div>
+      <div class="link-content">
+        <div class="link-title">IRL Podcast — Spotify</div>
+        <div class="link-desc">Stream on Spotify</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- RADIO -->
+  <div class="divider anim d7">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-label">Radio</div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://power1051.iheart.com/featured/angie-martinez/" target="_blank" class="link anim d7">
+      <div class="link-icon" style="background:var(--surface2);">
+        <span class="live-dot"></span>
+      </div>
+      <div class="link-content">
+        <div class="link-title">The Angie Martinez Show</div>
+        <div class="link-desc">Power 105.1 · Weekdays 2–6PM ET</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://www.iheart.com/podcast/1119-angie-martinez-irl-99106442/" target="_blank" class="link anim d7">
+      <div class="link-icon" style="background:var(--surface2);">📻</div>
+      <div class="link-content">
+        <div class="link-title">Listen on iHeart</div>
+        <div class="link-desc">Stream the show & IRL podcast on iHeartRadio</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- BOOK & MORE -->
+  <div class="divider anim d8">
+    <div class="divider-line"></div>
+    <div class="divider-dot"></div>
+    <div class="divider-label">Book & Press</div>
+    <div class="divider-dot"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://www.amazon.com/My-Voice-Memoir-Angie-Martinez/dp/1101990341" target="_blank" class="link featured anim d8">
+      <div class="link-icon" style="background:var(--honey-soft);border:1px solid var(--honey-border);">📖</div>
+      <div class="link-content">
+        <div class="link-title">My Voice: A Memoir</div>
+        <div class="link-desc">NYT Bestseller · Foreword by J. Cole</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="https://www.angiemartinez.com" target="_blank" class="link anim d9">
+      <div class="link-icon" style="background:var(--surface2);">🌐</div>
+      <div class="link-content">
+        <div class="link-title">AngieMartinez.com</div>
+        <div class="link-desc">Official website</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+
+    <a href="/cdn-cgi/l/email-protection#34667164787577716b767b7b7f7d7a736b7179757d78" class="link anim d9">
+      <div class="link-icon" style="background:var(--surface2);">✉️</div>
+      <div class="link-content">
+        <div class="link-title">Booking & Press Inquiries</div>
+        <div class="link-desc">For appearances, interviews & partnerships</div>
+      </div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-card anim d10">
+    <div class="quote-text">"She's the hip-hop Oprah for real."</div>
+    <div class="quote-author">— Nicki Minaj</div>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social anim d10">
+    <a href="https://instagram.com/angiemartinez" target="_blank" class="social-btn" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://instagram.com/angiemartinezirl" target="_blank" class="social-btn" title="IRL Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://tiktok.com/@angiemartinezirl" target="_blank" class="social-btn" title="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.17v-3.45a4.85 4.85 0 01-2.58-.74v-4.29h2.58z"/></svg>
+    </a>
+    <a href="https://x.com/anaboriqueen" target="_blank" class="social-btn" title="X / Twitter">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@angiemartinezIRL" target="_blank" class="social-btn" title="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar anim d11">
+    <button class="share-btn" onclick="sharePage()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share
+    </button>
+    <button class="share-btn" onclick="copyLink()">
+      <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      Copy Link
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer anim d12">
+    <div class="footer-brand">Designed by <a href="https://myverso.co" target="_blank">Verso</a></div>
+  </div>
+
+</div>
+
+<div class="share-toast" id="shareToast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var pageUrl='https://myverso.page/angie-martinez';
+var pageTitle='Angie Martinez — The Voice of New York';
+function sharePage(){
+  if(navigator.share){navigator.share({title:pageTitle,url:pageUrl}).catch(function(){});}
+  else{copyLink();}
+}
+function copyLink(){
+  navigator.clipboard.writeText(pageUrl).then(function(){showToast('✓ Link copied')}).catch(function(){showToast(pageUrl)});
+}
+function showToast(m){var t=document.getEleme
