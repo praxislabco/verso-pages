@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mel Robbins — Author, Podcaster, Speaker</title>
+<meta name="description" content="#1 NYT Bestselling Author. Host of the world's most shared podcast. TIME100 Creator. 40M+ followers.">
+<meta property="og:title" content="Mel Robbins — Author, Podcaster, Speaker">
+<meta property="og:description" content="The Let Them Theory. The Mel Robbins Podcast. 143 Studios. Pure Genius Protein.">
+<meta property="og:url" content="https://myverso.page/mel-robbins">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#074f34;
+  --bg-deep:#053d28;
+  --bg-card:rgba(0,0,0,.18);
+  --bg-card2:rgba(0,0,0,.12);
+  --border:rgba(255,255,255,.12);
+  --border2:rgba(255,255,255,.08);
+  --text:#FFFFFF;
+  --text2:rgba(255,255,255,.65);
+  --text3:rgba(255,255,255,.4);
+  --text4:rgba(255,255,255,.18);
+  --green:#00ac6a;
+  --green-soft:rgba(0,172,106,.15);
+  --green-border:rgba(0,172,106,.4);
+  --yellow:#f8e703;
+  --yellow-soft:rgba(248,231,3,.1);
+  --yellow-border:rgba(248,231,3,.3);
+  --black:#000000;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--sans);color:var(--text);
+  background:var(--bg);min-height:100dvh;
+  display:flex;flex-direction:column;align-items:center;
+}
+.page{width:100%;max-width:480px;position:relative;z-index:1;padding:0 16px 40px}
+
+/* HERO — full bleed */
+.hero{
+  width:100vw;margin-left:calc(-50vw + 50%);position:relative;overflow:hidden;
+  height:380px;
+}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
+.hero-gradient{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,var(--bg) 0%,rgba(7,79,52,.85) 40%,transparent 100%)}
+.hero-side-l{position:absolute;top:0;bottom:0;left:0;width:20%;background:linear-gradient(to right,rgba(7,79,52,.4) 0%,transparent 100%);z-index:2;pointer-events:none}
+.hero-side-r{position:absolute;top:0;bottom:0;right:0;width:20%;background:linear-gradient(to left,rgba(7,79,52,.4) 0%,transparent 100%);z-index:2;pointer-events:none}
+
+/* PROFILE */
+.profile{display:flex;flex-direction:column;align-items:center;margin-top:18px;position:relative;z-index:5}
+.name{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.01em;text-align:center}
+.tagline{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--yellow);margin-top:6px;letter-spacing:.01em}
+.bio{font-size:13px;color:var(--text2);line-height:1.65;text-align:center;max-width:360px;margin:10px auto 0}
+
+/* ACCOLADES */
+.accolades{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:14px}
+.accolade{font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;white-space:nowrap;color:var(--text3);background:var(--bg-card2);border:1px solid var(--border2)}
+.accolade.green{color:var(--green);background:var(--green-soft);border-color:var(--green-border)}
+.accolade.yellow{color:var(--yellow);background:var(--yellow-soft);border-color:var(--yellow-border)}
+.accolade.black{color:var(--text);background:rgba(0,0,0,.4);border-color:rgba(0,0,0,.5)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:18px;width:100%}
+.stat{text-align:center;padding:14px 4px;background:var(--bg-card);border:1px solid var(--border2);border-radius:12px;transition:all .3s}
+.stat:hover{border-color:var(--green-border);background:var(--green-soft)}
+.stat-val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--text)}
+.stat-label{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:2px}
+
+/* QUOTE */
+.quote-card{padding:22px;margin-top:16px;width:100%;background:var(--bg-card);border:1px solid var(--border2);border-radius:14px;border-left:3px solid var(--yellow);text-align:left}
+.quote-text{font-family:var(--serif);font-size:14.5px;font-style:italic;color:var(--text);line-height:1.55}
+.quote-attr{font-size:11px;font-weight:600;color:var(--yellow);margin-top:8px;letter-spacing:.03em}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:12px;margin:24px 0 12px;width:100%}
+.divider-line{flex:1;height:1px;background:var(--border2)}
+.divider-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3)}
+.divider-dot{width:3px;height:3px;border-radius:50%;background:var(--green)}
+
+/* PODCAST */
+.podcast-card{padding:16px;width:100%;background:var(--bg-card);border:1px solid var(--border2);border-radius:14px;display:flex;align-items:center;gap:14px}
+.podcast-eq{display:flex;align-items:flex-end;gap:2px;height:18px}
+.podcast-eq span{width:3px;border-radius:1px;background:var(--green);animation:eq .8s ease infinite alternate}
+.podcast-eq span:nth-child(1){height:8px;animation-delay:0s}
+.podcast-eq span:nth-child(2){height:14px;animation-delay:.15s}
+.podcast-eq span:nth-child(3){height:10px;animation-delay:.3s}
+.podcast-eq span:nth-child(4){height:16px;animation-delay:.1s}
+.podcast-eq span:nth-child(5){height:6px;animation-delay:.25s}
+@keyframes eq{0%{height:4px}100%{height:18px}}
+.podcast-info{flex:1}
+.podcast-now{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green)}
+.podcast-title{font-size:13px;font-weight:700;color:var(--text);margin-top:2px}
+.podcast-sub{font-size:11px;color:var(--text3);margin-top:1px}
+
+/* LINKS */
+.links{display:flex;flex-direction:column;gap:8px;width:100%}
+.link{display:flex;align-items:center;gap:14px;padding:13px 16px;background:var(--bg-card);border:1px solid var(--border2);border-radius:14px;text-decoration:none;color:var(--text);transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.link:hover{border-color:var(--green-border);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+.link-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;position:relative;z-index:2}
+.link-content{flex:1;position:relative;z-index:2;min-width:0}
+.link-title{font-size:14px;font-weight:700;letter-spacing:-.01em}
+.link-desc{font-size:11px;color:var(--text3);margin-top:1px}
+.link-arrow{font-size:14px;color:var(--text4);transition:all .3s;z-index:2;flex-shrink:0}
+.link:hover .link-arrow{color:var(--yellow);transform:translateX(3px)}
+.link-badge{font-size:7.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;position:relative;z-index:2;flex-shrink:0}
+
+.link.cta{background:rgba(0,172,106,.12);border-color:var(--green-border)}
+.link.cta:hover{box-shadow:0 12px 40px rgba(0,172,106,.15);transform:translateY(-3px)}
+.link.featured{border-color:var(--yellow-border);background:var(--yellow-soft)}
+.link.featured:hover{border-color:rgba(248,231,3,.4);box-shadow:0 8px 28px rgba(248,231,3,.08)}
+.link.brand{border-color:var(--green-border);background:var(--green-soft)}
+
+/* SOCIAL */
+.social{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px}
+.social-btn{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--border2);text-decoration:none;transition:all .3s}
+.social-btn:hover{border-color:var(--green-border);transform:translateY(-2px)}
+.social-btn svg{width:17px;height:17px;fill:var(--text2)}
+.social-btn:hover svg{fill:var(--text)}
+
+/* SHARE */
+.share-bar{display:flex;align-items:center;justify-content:center;margin-top:18px}
+.share-btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:100px;background:var(--bg-card);border:1px solid var(--border2);font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .3s}
+.share-btn:hover{border-color:var(--green-border);color:var(--text)}
+.share-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.share-overlay{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.share-overlay.open{opacity:1;pointer-events:auto}
+.share-sheet{width:100%;max-width:480px;background:var(--bg-deep);border:1px solid var(--border);border-radius:20px 20px 0 0;padding:12px 20px 28px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.share-overlay.open .share-sheet{transform:translateY(0)}
+.share-sheet-handle{width:36px;height:4px;border-radius:2px;background:rgba(255,255,255,.2);margin:0 auto 14px}
+.share-sheet-title{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--text);text-align:center}
+.share-sheet-url{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px auto 18px;padding:10px 16px;background:var(--bg-card);border:1px solid var(--border2);border-radius:10px;cursor:pointer;transition:all .3s;font-size:13px;color:var(--text2)}
+.share-sheet-url:hover{border-color:var(--green-border);color:var(--green)}
+.share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.share-option{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;cursor:pointer}
+.share-option span{font-size:11px;font-weight:600;color:var(--text3)}
+.share-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.share-option:hover .share-icon{transform:scale(1.08)}
+.share-option:hover span{color:var(--text)}
+.share-sheet-close{width:100%;padding:14px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border2);font-family:var(--sans);font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;transition:all .3s}
+.share-sheet-close:hover{border-color:var(--green-border);color:var(--text)}
+
+.share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--yellow);color:var(--black);padding:12px 24px;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:700;box-shadow:0 12px 36px rgba(0,0,0,.4);z-index:999;opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.share-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.page-footer{text-align:center;margin-top:28px;padding-top:18px;border-top:1px solid var(--border2)}
+.footer-brand{font-size:11px;color:var(--text4)}
+.footer-brand a{color:var(--green);text-decoration:none;font-weight:600;opacity:.7}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.a{opacity:0;animation:fadeUp .5s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}
+.d4{animation-delay:.2s}.d5{animation-delay:.25s}.d6{animation-delay:.3s}
+.d7{animation-delay:.35s}.d8{animation-delay:.4s}.d9{animation-delay:.45s}
+.d10{animation-delay:.5s}.d11{animation-delay:.55s}.d12{animation-delay:.6s}
+.d13{animation-delay:.65s}
+@media(max-width:480px){.page{padding:0 12px 32px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO — compact rounded card -->
+  <div class="hero a">
+    <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1771958493/Mel_Robbins_wk5ato.png" alt="Mel Robbins" class="hero-img">
+    <div class="hero-side-l"></div>
+    <div class="hero-side-r"></div>
+    <div class="hero-gradient"></div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="name a d1">Mel Robbins</div>
+    <div class="tagline a d2">Let Them. Then Let Me.</div>
+    <div class="bio a d3">#1 NYT Bestselling Author. Host of the world's most shared podcast. TIME100 Creator. Co-founder, Pure Genius Protein. 143 Studios, Boston.</div>
+
+    <div class="accolades a d4">
+      <span class="accolade yellow">#1 Book of 2025</span>
+      <span class="accolade green">Golden Globe Nominee</span>
+      <span class="accolade black">TIME100 Creators</span>
+      <span class="accolade green">Forbes 50 Over 50</span>
+      <span class="accolade">40M+ Followers</span>
+      <span class="accolade yellow">iHeart Best Host</span>
+    </div>
+  </div>
+
+  <div class="stats a d4">
+    <div class="stat"><div class="stat-val">8M+</div><div class="stat-label">Books Sold</div></div>
+    <div class="stat"><div class="stat-val">40M+</div><div class="stat-label">Followers</div></div>
+    <div class="stat"><div class="stat-val">65</div><div class="stat-label">Languages</div></div>
+  </div>
+
+  <!-- LISTEN -->
+  <div class="divider a d5"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-label">Listen</div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <div class="podcast-card a d5">
+    <div class="podcast-eq"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="podcast-info">
+      <div class="podcast-now">Now Streaming</div>
+      <div class="podcast-title">The Mel Robbins Podcast</div>
+      <div class="podcast-sub">#1 Most Shared · Golden Globe Nominated</div>
+    </div>
+  </div>
+
+  <div class="links">
+    <a href="https://open.spotify.com/show/7vz4RYsD5MulTCrcH478t1" target="_blank" class="link cta a d5">
+      <div class="link-icon" style="background:rgba(0,172,106,.15);border:1px solid rgba(0,172,106,.3);">🎧</div>
+      <div class="link-content"><div class="link-title">Listen on Spotify</div><div class="link-desc">New episodes weekly</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://podcasts.apple.com/us/podcast/the-mel-robbins-podcast/id1646101002" target="_blank" class="link a d5">
+      <div class="link-icon" style="background:var(--bg-card2);">🎙</div>
+      <div class="link-content"><div class="link-title">Apple Podcasts</div><div class="link-desc">#1 most-followed show</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.youtube.com/@melrobbins" target="_blank" class="link a d6">
+      <div class="link-icon" style="background:var(--bg-card2);">▶</div>
+      <div class="link-content"><div class="link-title">YouTube</div><div class="link-desc">3.9M subscribers · Full episodes & clips</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- BOOKS -->
+  <div class="divider a d6"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-label">Books</div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <div class="links">
+    <a href="https://melrob.co/letthem" target="_blank" class="link featured a d6">
+      <div class="link-icon" style="background:var(--yellow-soft);border:1px solid var(--yellow-border);">📖</div>
+      <div class="link-content"><div class="link-title">The Let Them Theory</div><div class="link-desc">#1 NYT Bestseller · 8M+ copies sold</div></div>
+      <div class="link-badge" style="background:var(--yellow-soft);color:var(--yellow);border:1px solid var(--yellow-border);">#1</div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/book/the-high-5-habit/" target="_blank" class="link a d7">
+      <div class="link-icon" style="background:var(--bg-card2);">✋</div>
+      <div class="link-content"><div class="link-title">The High 5 Habit</div><div class="link-desc">Take control of your life with one simple habit</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/book/the-5-second-rule/" target="_blank" class="link a d7">
+      <div class="link-icon" style="background:var(--bg-card2);">⏱</div>
+      <div class="link-content"><div class="link-title">The 5 Second Rule</div><div class="link-desc">The fastest way to change your life</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="quote-card a d8">
+    <div class="quote-text">"Mel gives millions of people a reason to believe in themselves."</div>
+    <div class="quote-attr">— TIME Magazine</div>
+  </div>
+
+  <!-- BRANDS -->
+  <div class="divider a d8"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-label">Brands & Ventures</div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <div class="links">
+    <a href="https://puregeniusprotein.com" target="_blank" class="link brand a d8">
+      <div class="link-icon" style="background:var(--green-soft);border:1px solid var(--green-border);">🥤</div>
+      <div class="link-content"><div class="link-title">Pure Genius Protein</div><div class="link-desc">Co-founder · Clean protein, real ingredients</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/the-let-them-tour/" target="_blank" class="link cta a d9">
+      <div class="link-icon" style="background:var(--green-soft);">🎤</div>
+      <div class="link-content"><div class="link-title">The Let Them Tour</div><div class="link-desc">Live events · Get tickets</div></div>
+      <div class="link-badge" style="background:var(--green-soft);color:var(--green);border:1px solid var(--green-border);">LIVE</div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/newsletter/" target="_blank" class="link a d9">
+      <div class="link-icon" style="background:var(--bg-card2);">💌</div>
+      <div class="link-content"><div class="link-title">Mel's Newsletter</div><div class="link-desc">Free tools & stories twice a week</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/course/make-it-happen/" target="_blank" class="link a d10">
+      <div class="link-icon" style="background:var(--bg-card2);">🎓</div>
+      <div class="link-content"><div class="link-title">Make It Happen · Free Course</div><div class="link-desc">2 hours of coaching + workbook</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- WORK WITH MEL -->
+  <div class="divider a d10"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-label">Work With Mel</div><div class="divider-dot"></div><div class="divider-line"></div></div>
+
+  <div class="links">
+    <a href="https://www.melrobbins.com/speaking/" target="_blank" class="link a d10">
+      <div class="link-icon" style="background:var(--yellow-soft);border:1px solid var(--yellow-border);">🏟</div>
+      <div class="link-content"><div class="link-title">Speaking & Keynotes</div><div class="link-desc">Fortune 10 boardrooms to global stages</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+    <a href="https://www.melrobbins.com/contact/" target="_blank" class="link a d11">
+      <div class="link-icon" style="background:var(--bg-card2);">✉️</div>
+      <div class="link-content"><div class="link-title">Contact · 143 Studios</div><div class="link-desc">Press, podcast guests, partnerships</div></div>
+      <div class="link-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="social a d11">
+    <a href="https://instagram.com/melrobbins" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://instagram.com/themelrobbinspodcast" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://tiktok.com/@melrobbins" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.44V12.8a8.2 8.2 0 005.58 2.17V11.5a4.85 4.85 0 01-3.77-1.58V6.69h3.77z"/></svg></a>
+    <a href="https://x.com/melrobbins" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="https://www.youtube.com/@melrobbins" target="_blank" class="social-btn"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar a d12">
+    <button class="share-btn" onclick="openShareSheet()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share This Page
+    </button>
+  </div>
+
+  <!-- SHARE SHEET -->
+  <div class="share-overlay" id="shareOverlay" onclick="closeShareSheet(event)">
+    <div class="share-sheet">
+      <div class="share-sheet-handle"></div>
+      <div class="share-sheet-title">Share Mel's Page</div>
+      <div class="share-sheet-url" onclick="copyLink()"><span>myverso.page/mel-robbins</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
+      <div class="share-grid">
+        <a href="#" onclick="shareX(event)" class="share-option"><div class="share-icon" style="background:#000;border:1px solid rgba(255,255,255,.15)"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><span>X</span></a>
+        <a href="#" onclick="shareFB(event)" class="share-option"><div class="share-icon" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><span>Facebook</span></a>
+        <a href="#" onclick="shareWA(event)" class="share-option"><div class="share-icon" style="background:#25D366"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><span>WhatsApp</span></a>
+        <a href="#" onclick="shareMsg(event)" class="share-option"><div class="share-icon" style="background:#34C759"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg></div><span>Message</span></a>
+        <a href="#" onclick="shareEmail(event)" class="share-option"><div class="share-icon" style="background:var(--green-soft);border:1px solid var(--green-border)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Email</span></a>
+        <a href="#" onclick="copyLink(event)" class="share-option"><div class="share-icon" style="background:var(--bg-card);border:1px solid var(--border2)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><span>Copy Link</span></a>
+      </div>
+      <button class="share-sheet-close" onclick="closeShareSheet()">Cancel</button>
+    </div>
+  </div>
+
+  <div class="page-footer a d13"><div class="footer-brand">Designed by <a href="https://myverso.co" target="_blank">Verso</a></div></div>
+</div>
+
+<div class="share-toast" id="shareToast"></div>
+
+<script>
+var pageUrl='https://myverso.page/mel-robbins';
+var pageTitle='Mel Robbins \u2014 Author, Podcaster, Speaker';
+var shareText='Check out Mel Robbins\u2019 page \u2728\ud83c\udf99\ufe0f';
+function openShareSheet(){document.getElementById('shareOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeShareSheet(e){if(!e||e.target.id==='shareOverlay'||e.target.closest('.share-sheet-close')){document.getElementById('shareOverlay').classList.remove('open');document.body.style.overflow='';}}
+function shareX(e){e.preventDefault();window.open('https://x.com/intent/tweet?text='+encodeURIComponent(shareText)+'&url='+encodeURIComponent(pageUrl),'_blank');closeShareSheet();}
+function shareFB(e){e.preventDefault();window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(pageUrl),'_blank');closeShareSheet();}
+function shareWA(e){e.preventDefault();window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(shareText+' '+pageUrl),'_blank');closeShareSheet();}
+function shareMsg(e){e.preventDefault();window.open('sms:?&body='+encodeURIComponent(shareText+' '+pageUrl));closeShareSheet();}
+function shareEmail(e){e.preventDefault();window.open('mailto:?subject='+encodeURIComponent(pageTitle)+'&body='+encodeURIComponent(shareText+'\n\n'+pageUrl));closeShareSheet();}
+function copyLink(e){if(e)e.preventDefault();navigator.clipboard.writeText(pageUrl).then(function(){showToast('\u2713 Link copied!')}).catch(function(){showToast(pageUrl)});closeShareSheet();}
+function showToast(m){var t=document.getElementById('shareToast');t.textContent=m;t.classList.add('visible');setTimeout(function(){t.classList.remove('visible')},2200);}
+</script>
+</body>
+</html>
