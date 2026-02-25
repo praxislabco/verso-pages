@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta property="og:title" content="Cassidie Ania Pamphile | Grayson Track & Field">
+<meta property="og:description" content="Grayson High School · 100m & 200m · Class of 2026">
+<title>Cassidie Ania Pamphile — Grayson Track & Field</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep:      #050908;
+    --bg:           #080e0a;
+    --bg-card:      rgba(255,255,255,0.04);
+    --bg-card-hover:rgba(255,255,255,0.07);
+    --border:       rgba(255,255,255,0.06);
+    --border-hover: rgba(216,181,17,0.40);
+    --green:        #234f33;
+    --green-bright: #2d6641;
+    --green-dim:    rgba(35,79,51,0.15);
+    --green-border: rgba(35,79,51,0.40);
+    --gold:         #d8b511;
+    --gold2:        #c0a00f;
+    --gold-dim:     rgba(216,181,17,0.10);
+    --gold-glow:    rgba(216,181,17,0.08);
+    --gold-border:  rgba(216,181,17,0.22);
+    --text:         #FFFFFF;
+    --text-muted:   rgba(255,255,255,0.55);
+    --text-faint:   rgba(255,255,255,0.28);
+    --radius:       12px;
+    --serif:        'Oswald', sans-serif;
+    --sans:         'Inter', -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg-deep); -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; justify-content: center;
+    overflow-x: hidden;
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(35,79,51,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgba(216,181,17,0.04) 0%, transparent 50%);
+  }
+
+  /* ═══ AMBIENT ═══ */
+  .ambient {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 50% 35% at 50% 0%, rgba(35,79,51,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(216,181,17,0.03) 0%, transparent 50%);
+  }
+  .ambient::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(35,79,51,0.04) 0%, transparent 50%);
+    animation: pulse-ambient 9s ease-in-out infinite alternate;
+  }
+  @keyframes pulse-ambient { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+
+  .container {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 460px;
+    padding: 0 20px 52px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* ═══ VIDEO HERO ═══ */
+  .hero-video-wrap {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInDown 0.5s ease both;
+  }
+  .hero-video-wrap video {
+    width: 100%; height: 360px;
+    object-fit: cover; object-position: center center;
+    display: block; min-width: 100%;
+  }
+  .hero-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 75%;
+    background: linear-gradient(to top, var(--bg) 0%, rgba(8,14,10,0.75) 50%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-side-l {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 20%;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-side-r {
+    position: absolute; top: 0; bottom: 0; right: 0; width: 20%;
+    background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(to top, rgba(35,79,51,0.12) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-sport-badge {
+    position: absolute; top: 14px; right: 14px; z-index: 10;
+    font-size: 9px; font-weight: 800; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 4px;
+    background: rgba(216,181,17,0.12); color: var(--gold);
+    border: 1px solid rgba(216,181,17,0.25);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ═══ AVATAR ═══ */
+  .avatar-wrap {
+    position: relative; z-index: 10;
+    margin-top: -60px; margin-bottom: 0;
+    animation: fadeInUp 0.5s ease 0.15s both;
+  }
+  .avatar-ring {
+    width: 112px; height: 112px;
+    border-radius: 50%; padding: 3px;
+    background: linear-gradient(135deg, var(--gold), var(--green), var(--gold));
+    box-shadow: 0 0 0 3px var(--bg), 0 0 28px rgba(216,181,17,0.30), 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .avatar-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%; object-fit: cover; object-position: center top;
+    display: block; background: var(--bg-card);
+  }
+  .avatar-school-badge {
+    position: absolute; bottom: 2px; right: 0px;
+    background: var(--green);
+    border: 2px solid var(--bg);
+    border-radius: 100px;
+    padding: 3px 8px;
+    font-size: 8px; font-weight: 900; color: var(--gold);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ═══ BRAND ═══ */
+  .brand {
+    text-align: center; margin-top: 16px;
+    position: relative; z-index: 3;
+    animation: fadeInUp 0.5s ease 0.2s both;
+  }
+  .brand-name {
+    font-family: var(--serif);
+    font-size: 30px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .brand-name span { color: var(--gold); }
+  .brand-alias {
+    font-size: 12px; color: var(--text-muted); font-weight: 500;
+    margin-top: 2px; font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  .brand-sub {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; color: var(--text-muted); font-weight: 600;
+    margin-top: 6px; letter-spacing: 0.02em;
+  }
+  .brand-sub .dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
+  .accent-line {
+    width: 44px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 14px auto 0;
+  }
+
+  /* ═══ SEASON BADGE ═══ */
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-dim); border: 1px solid var(--gold-border);
+    padding: 8px 18px; border-radius: 100px;
+    margin: 18px 0 8px; backdrop-filter: blur(12px);
+    animation: fadeInUp 0.5s ease 0.25s both;
+  }
+  .badge-dot {
+    width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold); animation: pulse 2s infinite;
+  }
+  .badge span { color: var(--gold); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ═══ EVENTS ═══ */
+  .events-row {
+    display: flex; gap: 8px; margin: 16px 0 4px;
+    animation: fadeInUp 0.5s ease 0.28s both;
+  }
+  .event-chip {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--green-dim); border: 1px solid var(--green-border);
+    padding: 8px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 800; color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .event-chip span { font-size: 16px; }
+
+  /* ═══ COLLEGES ═══ */
+  .colleges-card {
+    width: 100%; margin: 20px 0 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-top: 3px solid var(--green-bright);
+    border-radius: var(--radius); padding: 16px 18px;
+    animation: fadeInUp 0.5s ease 0.3s both;
+  }
+  .colleges-label {
+    font-size: 9px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.10em; color: var(--gold); margin-bottom: 10px;
+  }
+  .colleges-list {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .college-chip {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 5px 12px; border-radius: 100px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-muted);
+    transition: all 0.25s;
+  }
+  .college-chip:hover { border-color: var(--gold-border); color: var(--gold); }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 26px 0 16px; width: 100%;
+    animation: fadeInUp 0.5s ease 0.3s both;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+  .section-divider-icon { font-size: 11px; color: var(--gold); }
+  .section-divider-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.10em; color: var(--text-faint);
+  }
+
+  /* ═══ SECTION LABEL ═══ */
+  .section-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.10em; color: var(--text-faint);
+    margin-bottom: 12px; width: 100%;
+    animation: fadeInUp 0.5s ease 0.22s both;
+  }
+
+  /* ═══ SCHEDULE ═══ */
+  .meet-list {
+    width: 100%; display: flex; flex-direction: column; gap: 7px;
+    animation: fadeInUp 0.5s ease 0.35s both;
+  }
+  .meet-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 13px 15px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.25s ease;
+  }
+  .meet-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+  .meet-card.past { opacity: 0.5; }
+  .meet-card.past:hover { opacity: 0.7; }
+  .meet-card.conf { border-left: 3px solid var(--gold); }
+  .meet-card.full { border-left: 3px solid rgba(255,100,100,0.6); }
+  .meet-date {
+    text-align: center; min-width: 36px; flex-shrink: 0;
+  }
+  .meet-date .month { font-size: 9px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; }
+  .meet-date .day { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  .meet-info { flex: 1; min-width: 0; }
+  .meet-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meet-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .meet-tag {
+    font-size: 8px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 3px 9px; border-radius: 100px; flex-shrink: 0;
+  }
+  .meet-tag.open { background: var(--green-dim); color: #5dc887; border: 1px solid var(--green-border); }
+  .meet-tag.full { background: rgba(255,100,100,0.08); color: #ff7070; border: 1px solid rgba(255,100,100,0.2); }
+  .meet-tag.past { background: rgba(255,255,255,0.04); color: var(--text-faint); border: 1px solid var(--border); }
+  .meet-tag.today { background: rgba(216,181,17,0.15); color: var(--gold); border: 1px solid var(--gold-border); }
+  .meet-arrow { color: var(--text-faint); font-size: 14px; flex-shrink: 0; margin-left: 4px; }
+
+  /* ═══ LINKS ═══ */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 8px; animation: fadeInUp 0.5s ease 0.4s both; }
+  .link-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+  }
+  .link-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0; background: var(--gold);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.25s;
+  }
+  .link-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+  .link-card:hover::before { width: 3px; }
+  .link-icon { font-size: 22px; flex-shrink: 0; width: 40px; text-align: center; position: relative; z-index: 1; }
+  .link-content { flex: 1; min-width: 0; position: relative; z-index: 1; }
+  .link-title { font-size: 14px; font-weight: 700; }
+  .link-subtitle { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .link-badge {
+    font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 9px; border-radius: 100px;
+    background: var(--gold-dim); color: var(--gold);
+    border: 1px solid var(--gold-border); flex-shrink: 0;
+  }
+  .link-arrow { color: var(--text-faint); font-size: 14px; flex-shrink: 0; margin-left: 4px; position: relative; z-index: 1; }
+  .link-card:hover .link-arrow { color: var(--gold); }
+
+  /* CTA link */
+  .link-card.cta {
+    background: linear-gradient(135deg, var(--green), var(--green-bright));
+    border-color: var(--green-border);
+  }
+  .link-card.cta .link-title { color: var(--gold); }
+  .link-card.cta .link-subtitle { color: rgba(255,255,255,0.45); }
+  .link-card.cta:hover { box-shadow: 0 12px 40px rgba(35,79,51,0.4); transform: translateY(-2px); }
+
+  /* ═══ SOCIALS ═══ */
+  .socials {
+    display: flex; gap: 12px; margin-top: 28px;
+    animation: fadeInUp 0.5s ease 0.45s both;
+  }
+  .social-link {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .social-link:hover { border-color: var(--gold-border); color: var(--gold); background: var(--gold-dim); transform: translateY(-2px); }
+  .social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ═══ SHARE ═══ */
+  .share-bar {
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 24px;
+    animation: fadeInUp 0.5s ease 0.5s both;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 100px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    color: var(--text-muted); cursor: pointer; letter-spacing: 0.02em;
+    transition: all 0.3s;
+  }
+  .share-btn:hover { border-color: var(--border-hover); color: var(--gold); }
+  .share-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ═══ SHARE OVERLAY ═══ */
+  .share-overlay {
+    position: fixed; inset: 0; z-index: 900;
+    background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .share-overlay.open { opacity: 1; pointer-events: auto; }
+  .share-sheet {
+    width: 100%; max-width: 480px;
+    background: #0d130f; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px 20px 0 0;
+    padding: 12px 20px 36px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .share-overlay.open .share-sheet { transform: translateY(0); }
+  .share-handle { width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); margin: 0 auto 16px; }
+  .share-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--text); text-align: center; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; }
+  .share-url {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 16px; margin-bottom: 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.3s;
+    font-size: 12px; color: var(--text-muted);
+  }
+  .share-url:hover { border-color: var(--border-hover); color: var(--gold); }
+  .share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .share-option { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; }
+  .share-option span { font-size: 10px; font-weight: 600; color: var(--text-faint); }
+  .share-option:hover span { color: var(--text-muted); }
+  .share-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+  .share-option:hover .share-icon { transform: scale(1.08); }
+  .share-close {
+    width: 100%; padding: 14px; border-radius: var(--radius);
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    color: var(--text-muted); cursor: pointer; transition: all 0.3s;
+  }
+  .share-close:hover { border-color: var(--border-hover); color: var(--gold); }
+
+  /* ═══ TOAST ═══ */
+  .share-toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--green); color: var(--gold);
+    padding: 12px 28px; border-radius: 100px;
+    font-size: 13px; font-weight: 800; z-index: 999;
+    box-shadow: 0 8px 32px rgba(35,79,51,0.4);
+    opacity: 0; pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ═══ FOOTER ═══ */
+  .footer { margin-top: 28px; text-align: center; animation: fadeInUp 0.5s ease 0.55s both; }
+  .footer-line { width: 40px; height: 1px; background: var(--border); margin: 0 auto 14px; }
+  .footer a { font-size: 11px; color: var(--text-faint); text-decoration: none; letter-spacing: 0.06em; }
+  .footer a:hover { color: var(--gold); }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInUp   { from { opacity: 0; transform: translateY(16px); }  to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.7; } }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 14px 52px; }
+    .share-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .share-icon { width: 46px; height: 46px; }
+  }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="container">
+
+  <!-- VIDEO HERO -->
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dvpjzek6u/video/upload/v1772032664/IMG_7723_i6namj.mov" type="video/mp4">
+    </video>
+    <div class="hero-side-l"></div>
+    <div class="hero-side-r"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-sport-badge">▶ TRACK</div>
+  </div>
+
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-ring">
+      <img
+        src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1772033380/9BFF2404-6804-4B8A-90E0-4B3F9329B75A_1_x1mnac.png"
+        alt="Cassidie Ania Pamphile"
+      />
+    </div>
+    <div class="avatar-school-badge">Grayson</div>
+  </div>
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="brand-name">Cassidie <span>Ania</span></div>
+    <div class="brand-alias">"Ania"</div>
+    <div class="brand-sub">
+      Grayson High School
+      <span class="dot"></span>
+      Track & Field
+      <span class="dot"></span>
+      Class of 2026
+    </div>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- SEASON BADGE -->
+  <div class="badge">
+    <div class="badge-dot"></div>
+    <span>2026 Outdoor Season · In Progress</span>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="events-row">
+    <div class="event-chip"><span>⚡</span> 100m</div>
+    <div class="event-chip"><span>🏃🏾‍♀️</span> 200m</div>
+  </div>
+
+  <!-- COLLEGE ACCEPTANCES -->
+  <div class="colleges-card">
+    <div class="colleges-label">🎓 College Acceptances</div>
+    <div class="colleges-list">
+      <div class="college-chip">Kennesaw State</div>
+      <div class="college-chip">Georgia Southern</div>
+      <div class="college-chip">Georgia State</div>
+      <div class="college-chip">Valdosta State</div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-label">2026 Outdoor Schedule</div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="meet-list">
+
+    <!-- PAST MEETS -->
+    <div class="meet-card past">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">9</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Archer Time Trial</div>
+        <div class="meet-meta">Lawrenceville, GA</div>
+      </div>
+      <span class="meet-tag past">Results</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card past">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">18</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Archer All-Comers #1</div>
+        <div class="meet-meta">Lawrenceville, GA</div>
+      </div>
+      <span class="meet-tag past">Results</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card past">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">21</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Collins Hill Eagle Icebreaker</div>
+        <div class="meet-meta">Suwanee, GA</div>
+      </div>
+      <span class="meet-tag past">Results</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card past">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">25</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Grayson Home Meet #1</div>
+        <div class="meet-meta">Loganville, GA</div>
+      </div>
+      <span class="meet-tag today">Today</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <!-- UPCOMING MEETS -->
+    <div class="meet-card full">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">27</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Parkview Need for Speed XVII</div>
+        <div class="meet-meta">Lilburn, GA · Williams & Williams Law Firm</div>
+      </div>
+      <span class="meet-tag full">Full</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card">
+      <div class="meet-date"><div class="month">Feb</div><div class="day">28</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Javianne Oliver Invitational</div>
+        <div class="meet-meta">Monroe, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">4</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Grayson Home Meet #2</div>
+        <div class="meet-meta">Loganville, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">11</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Grayson Home Meet #3</div>
+        <div class="meet-meta">Loganville, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card full">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">14</div></div>
+      <div class="meet-info">
+        <div class="meet-name">James Rollerson Memorial Relays</div>
+        <div class="meet-meta">Jackson, GA</div>
+      </div>
+      <span class="meet-tag full">Full</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card full">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">18</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Grayson Home Meet #4</div>
+        <div class="meet-meta">Loganville, GA</div>
+      </div>
+      <span class="meet-tag full">Full</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card conf">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">21</div></div>
+      <div class="meet-info">
+        <div class="meet-name">4th Annual Gail Devers Invitational</div>
+        <div class="meet-meta">Lawrenceville, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card conf">
+      <div class="meet-date"><div class="month">Mar</div><div class="day">26</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Gwinnett County Varsity Championship</div>
+        <div class="meet-meta">Hoschton, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card conf">
+      <div class="meet-date"><div class="month">Apr</div><div class="day">2</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Gwinnett County JV Championship</div>
+        <div class="meet-meta">Lawrenceville, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+    <div class="meet-card conf">
+      <div class="meet-date"><div class="month">Apr</div><div class="day">15</div></div>
+      <div class="meet-info">
+        <div class="meet-name">Walnut Grove Region Tune Up</div>
+        <div class="meet-meta">Loganville, GA</div>
+      </div>
+      <span class="meet-tag open">Open</span>
+      <span class="meet-arrow">→</span>
+    </div>
+
+  </div>
+
+  <!-- LINKS -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-label">Connect & Follow</div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://www.graysonrams.com/sport/track%20and%20field/girls" target="_blank" rel="noopener" class="link-card cta">
+      <div class="link-icon">🐏</div>
+      <div class="link-content">
+        <div class="link-title">Grayson Rams — Track & Field</div>
+        <div class="link-subtitle">Official team page · Roster & results</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="https://www.instagram.com/iamcassidieaniaa._/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">📸</div>
+      <div class="link-content">
+        <div class="link-title">@iamcassidieaniaa._</div>
+        <div class="link-subtitle">Follow on Instagram</div>
+      </div>
+      <span class="link-badge">IG</span>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="https://www.tiktok.com/@_.itsaniaaa_" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">🎵</div>
+      <div class="link-content">
+        <div class="link-title">@_.itsaniaaa_</div>
+        <div class="link-subtitle">Follow on TikTok</div>
+      </div>
+      <span class="link-badge">TT</span>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="#" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">📩</div>
+      <div class="link-content">
+        <div class="link-title">NIL & Recruiting Inquiries</div>
+        <div class="link-subtitle">Sponsorships, brand deals & collabs</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="https://www.hudl.com" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">🎥</div>
+      <div class="link-content">
+        <div class="link-title">Highlights & Race Footage</div>
+        <div class="link-subtitle">Watch on Hudl</div>
+      </div>
+      <span class="link-badge">New</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a href="https://www.instagram.com/iamcassidieaniaa._/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@_.itsaniaaa_" class="social-link" target="_blank" rel="noopener" title="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.64a8.26 8.26 0 004.76 1.5v-3.45a4.8 4.8 0 01-1-.15z"/></svg>
+    </a>
+    <a href="https://www.graysonrams.com/sport/track%20and%20field/girls" class="social-link" target="_blank" rel="noopener" title="Grayson Rams">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar">
+    <button class="share-btn" onclick="openShare()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share Ania's Page
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <a href="https://verso.page" target="_blank" rel="noopener">verso.page</a>
+  </div>
+
+</div>
+
+<!-- SHARE SHEET -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+  <div class="share-sheet" id="shareSheet">
+    <div class="share-handle"></div>
+    <div class="share-title">Share Ania's Page</div>
+    <div class="share-url" onclick="copyLink()">
+      <span>myverso.page/cassidie-ania</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </div>
+    <div class="share-grid">
+      <a href="#" onclick="shareX(event)" class="share-option">
+        <div class="share-icon" style="background:#000;border:1px solid rgba(255,255,255,.12)">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <span>X / Twitter</span>
+      </a>
+      <a href="#" onclick="shareFB(event)" class="share-option">
+        <div class="share-icon" style="background:#1877F2">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+      <a href="#" onclick="shareWA(event)" class="share-option">
+        <div class="share-icon" style="background:#25D366">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" onclick="shareMsg(event)" class="share-option">
+        <div class="share-icon" style="background:#34C759">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+        </div>
+        <span>Message</span>
+      </a>
+      <a href="#" onclick="shareEmail(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(216,181,17,0.12);border:1px solid rgba(216,181,17,0.2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d8b511" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span>Email</span>
+      </a>
+      <a href="#" onclick="copyLink(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <span>Copy Link</span>
+      </a>
+      <a href="#" onclick="shareMore(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(35,79,51,0.2);border:1px solid rgba(35,79,51,0.4)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#5dc887" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <span>More Apps</span>
+      </a>
+    </div>
+    <button class="share-close" onclick="closeShare()">Cancel</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="share-toast" id="shareToast"></div>
+
+<script>
+  var PAGE_URL   = 'https://myverso.page/cassidie-ania';
+  var PAGE_TITLE = 'Cassidie Ania Pamphile — Grayson Track & Field';
+  var SHARE_TEXT = 'Check out Ania\'s page 🏃🏾‍♀️⚡';
+
+  function openShare() {
+    document.getElementById('shareOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeShare(e) {
+    if (!e || e.target.id === 'shareOverlay' || e.target.closest('.share-close')) {
+      document.getElementById('shareOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  function shareX(e) {
+    e.preventDefault();
+    window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL), '_blank', 'width=600,height=400');
+    closeShare();
+  }
+  function shareFB(e) {
+    e.preventDefault();
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE_URL) + '&quote=' + encodeURIComponent(SHARE_TEXT), '_blank', 'width=600,height=400');
+    closeShare();
+  }
+  function shareWA(e) {
+    e.preventDefault();
+    window.open('https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL), '_blank');
+    closeShare();
+  }
+  function shareMsg(e) {
+    e.preventDefault();
+    window.location.href = 'sms:?&body=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL);
+    closeShare();
+  }
+  function shareEmail(e) {
+    e.preventDefault();
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(PAGE_TITLE) + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL);
+    closeShare();
+  }
+  function copyLink(e) {
+    if (e) e.preventDefault();
+    var fallback = function() {
+      var ta = document.createElement('textarea');
+      ta.value = PAGE_URL; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      showToast('✓ Link copied!');
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(PAGE_URL).then(function() { showToast('✓ Link copied!'); }).catch(fallback);
+    } else { fallback(); }
+    closeShare();
+  }
+  function shareMore(e) {
+    e.preventDefault();
+    if (navigator.share) {
+      closeShare();
+      navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL })
+        .catch(function(err) { if (err.name !== 'AbortError') openShare(); });
+    } else { copyLink(e); }
+  }
+  function showToast(msg) {
+    var t = document.getElementById('shareToast');
+    t.textContent = msg; t.classList.add('visible');
+    setTimeout(function() { t.classList.remove('visible'); }, 2400);
+  }
+</script>
+
+</body>
+</html>
