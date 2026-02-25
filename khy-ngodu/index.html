@@ -756,11 +756,24 @@
 <div class="share-toast" id="shareToast"></div>
 
 <script>
-  var PAGE_URL = 'https://myverso.page/khy-ngodu';
+  var PAGE_URL   = 'https://myverso.page/khy-ngodu';
   var PAGE_TITLE = 'Khy Ngodu — #35 | UCF Knights';
   var SHARE_TEXT = 'Check out Khy Ngodu\'s page 🏀🔥';
 
+  // Primary: use native OS share sheet if available (best on mobile)
   function openShare() {
+    if (navigator.share) {
+      navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL })
+        .catch(function(err) {
+          // User cancelled or share failed — fall back to custom sheet
+          if (err.name !== 'AbortError') openCustomSheet();
+        });
+    } else {
+      openCustomSheet();
+    }
+  }
+
+  function openCustomSheet() {
     document.getElementById('shareOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -770,18 +783,63 @@
       document.body.style.overflow = '';
     }
   }
-  function shareX(e) { e.preventDefault(); window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(PAGE_URL), '_blank'); closeShare(); }
-  function shareFB(e) { e.preventDefault(); window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE_URL), '_blank'); closeShare(); }
-  function shareWA(e) { e.preventDefault(); window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL), '_blank'); closeShare(); }
-  function shareMsg(e) { e.preventDefault(); window.open('sms:?&body=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL)); closeShare(); }
-  function shareEmail(e) { e.preventDefault(); window.open('mailto:?subject=' + encodeURIComponent(PAGE_TITLE) + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL)); closeShare(); }
-  function copyLink(e) {
-    if (e) e.preventDefault();
-    navigator.clipboard.writeText(PAGE_URL).then(function() {
-      showToast('✓ Link copied!');
-    }).catch(function() { showToast(PAGE_URL); });
+
+  // Each opens a compose/post view pre-filled with text + link
+  function shareX(e) {
+    e.preventDefault();
+    window.open(
+      'https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL),
+      '_blank', 'width=600,height=400'
+    );
     closeShare();
   }
+  function shareFB(e) {
+    e.preventDefault();
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE_URL) +
+      '&quote=' + encodeURIComponent(SHARE_TEXT),
+      '_blank', 'width=600,height=400'
+    );
+    closeShare();
+  }
+  function shareWA(e) {
+    e.preventDefault();
+    // wa.me works on both mobile (opens app) and desktop (opens web)
+    window.open(
+      'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL),
+      '_blank'
+    );
+    closeShare();
+  }
+  function shareMsg(e) {
+    e.preventDefault();
+    // sms: URI — body pre-filled with text + link
+    window.location.href = 'sms:?&body=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL);
+    closeShare();
+  }
+  function shareEmail(e) {
+    e.preventDefault();
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(PAGE_TITLE) +
+      '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL);
+    closeShare();
+  }
+  function copyLink(e) {
+    if (e) e.preventDefault();
+    navigator.clipboard.writeText(PAGE_URL)
+      .then(function() { showToast('✓ Link copied!'); })
+      .catch(function() {
+        // Fallback for older browsers
+        var ta = document.createElement('textarea');
+        ta.value = PAGE_URL;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('✓ Link copied!');
+      });
+    closeShare();
+  }
+
   function showToast(msg) {
     var t = document.getElementById('shareToast');
     t.textContent = msg;
