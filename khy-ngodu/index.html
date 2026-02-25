@@ -63,22 +63,33 @@
 
   /* ═══ VIDEO HERO ═══ */
   .hero-video-wrap {
-    width: calc(100% + 40px);
-    margin: 0 -20px 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     position: relative;
     overflow: hidden;
     animation: fadeInDown 0.5s ease both;
   }
   .hero-video-wrap video {
     width: 100%;
-    height: 340px;
+    height: 360px;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center center;
     display: block;
+    min-width: 100%;
   }
   .hero-overlay {
     position: absolute; bottom: 0; left: 0; right: 0; height: 75%;
     background: linear-gradient(to top, var(--bg) 0%, rgba(10,10,15,0.7) 50%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-side-l {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 20%;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  .hero-side-r {
+    position: absolute; top: 0; bottom: 0; right: 0; width: 20%;
+    background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
     pointer-events: none;
   }
   .hero-jersey {
@@ -473,6 +484,8 @@
       preload="auto"
     ></video>
     <div class="hero-overlay"></div>
+    <div class="hero-side-l"></div>
+    <div class="hero-side-r"></div>
     <div class="hero-jersey">#35</div>
   </div>
 
