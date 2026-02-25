@@ -747,6 +747,12 @@
         </div>
         <span>Copy Link</span>
       </a>
+      <a href="#" onclick="shareMore(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(180,151,90,0.12);border:1px solid rgba(180,151,90,0.2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4975A" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <span>More Apps</span>
+      </a>
     </div>
     <button class="share-close" onclick="closeShare()">Cancel</button>
   </div>
@@ -760,20 +766,8 @@
   var PAGE_TITLE = 'Khy Ngodu — #35 | UCF Knights';
   var SHARE_TEXT = 'Check out Khy Ngodu\'s page 🏀🔥';
 
-  // Primary: use native OS share sheet if available (best on mobile)
+  // Always open the custom sheet so all social options are visible
   function openShare() {
-    if (navigator.share) {
-      navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL })
-        .catch(function(err) {
-          // User cancelled or share failed — fall back to custom sheet
-          if (err.name !== 'AbortError') openCustomSheet();
-        });
-    } else {
-      openCustomSheet();
-    }
-  }
-
-  function openCustomSheet() {
     document.getElementById('shareOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -784,7 +778,7 @@
     }
   }
 
-  // Each opens a compose/post view pre-filled with text + link
+  // X — pre-filled compose
   function shareX(e) {
     e.preventDefault();
     window.open(
@@ -793,6 +787,7 @@
     );
     closeShare();
   }
+  // Facebook — share dialog
   function shareFB(e) {
     e.preventDefault();
     window.open(
@@ -802,42 +797,57 @@
     );
     closeShare();
   }
+  // WhatsApp — pre-filled message
   function shareWA(e) {
     e.preventDefault();
-    // wa.me works on both mobile (opens app) and desktop (opens web)
     window.open(
       'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL),
       '_blank'
     );
     closeShare();
   }
+  // iMessage / SMS — pre-filled body
   function shareMsg(e) {
     e.preventDefault();
-    // sms: URI — body pre-filled with text + link
     window.location.href = 'sms:?&body=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL);
     closeShare();
   }
+  // Email — pre-filled subject + body
   function shareEmail(e) {
     e.preventDefault();
     window.location.href = 'mailto:?subject=' + encodeURIComponent(PAGE_TITLE) +
       '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL);
     closeShare();
   }
+  // Copy link
   function copyLink(e) {
     if (e) e.preventDefault();
-    navigator.clipboard.writeText(PAGE_URL)
-      .then(function() { showToast('✓ Link copied!'); })
-      .catch(function() {
-        // Fallback for older browsers
-        var ta = document.createElement('textarea');
-        ta.value = PAGE_URL;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('✓ Link copied!');
-      });
+    var fallback = function() {
+      var ta = document.createElement('textarea');
+      ta.value = PAGE_URL;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('✓ Link copied!');
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(PAGE_URL)
+        .then(function() { showToast('✓ Link copied!'); })
+        .catch(fallback);
+    } else { fallback(); }
     closeShare();
+  }
+  // More Apps — native OS share sheet (Instagram, Snapchat, etc.)
+  function shareMore(e) {
+    e.preventDefault();
+    if (navigator.share) {
+      closeShare();
+      navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL })
+        .catch(function(err) { if (err.name !== 'AbortError') openShare(); });
+    } else {
+      copyLink(e);
+    }
   }
 
   function showToast(msg) {
