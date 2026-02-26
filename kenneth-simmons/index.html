@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta property="og:title" content="Kenneth Simmons — Entrepreneur & Builder">
+<meta property="og:description" content="Founder & CEO of RecruitIQ · Founder of Praxis Lab · Building AI software for education, compliance & operations">
+<title>Kenneth Simmons</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:           #080808;
+    --bg-card:      rgba(255,255,255,0.04);
+    --bg-card-hover:rgba(255,255,255,0.07);
+    --border:       rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.18);
+    --gold:         #C9A84C;
+    --gold2:        #e0c060;
+    --gold-dim:     rgba(201,168,76,0.10);
+    --gold-border:  rgba(201,168,76,0.25);
+    --text:         #FFFFFF;
+    --text-muted:   rgba(255,255,255,0.50);
+    --text-faint:   rgba(255,255,255,0.25);
+    --radius:       14px;
+    --serif:        'Oswald', sans-serif;
+    --sans:         'Inter', -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; justify-content: center;
+    overflow-x: hidden;
+    background: var(--bg);
+  }
+
+  /* ═══ AMBIENT ═══ */
+  .ambient {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 45% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 15% 50%, rgba(255,255,255,0.02) 0%, transparent 50%);
+  }
+
+  .container {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 460px;
+    padding: 0 20px 52px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    animation: fadeInDown 0.5s ease both;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1208 40%, #0d0d0d 100%);
+  }
+  .hero-noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .hero-lines {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(201,168,76,0.03) 60px,
+      rgba(201,168,76,0.03) 61px
+    );
+  }
+  .hero-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://res.cloudinary.com/dvpjzek6u/image/upload/v1772077300/kenhero_fzntyk.png');
+    background-size: cover; background-position: center center;
+  }
+  .hero-photo-fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8,8,8,0.15) 0%,
+      transparent 30%,
+      transparent 50%,
+      rgba(8,8,8,0.5) 80%,
+      var(--bg) 100%
+    );
+  }
+  .hero-bottom-fade {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+    background: linear-gradient(to top, var(--bg), transparent);
+    pointer-events: none;
+  }
+  .hero-top-fade {
+    position: absolute; top: 0; left: 0; right: 0; height: 60px;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+    pointer-events: none;
+  }
+  .hero-content {
+    position: absolute; bottom: 32px; left: 24px;
+    z-index: 10;
+  }
+  .hero-eyebrow {
+    font-size: 9px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: 38px; font-weight: 700;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    line-height: 0.95; color: var(--text);
+  }
+  .hero-name span { color: var(--gold); }
+
+  /* ═══ AVATAR ═══ */
+  .avatar-wrap {
+    position: relative; z-index: 10;
+    margin-top: -52px; margin-bottom: 0;
+    animation: fadeInUp 0.5s ease 0.1s both;
+  }
+  .avatar-ring {
+    width: 100px; height: 100px; border-radius: 50%; padding: 3px;
+    background: linear-gradient(135deg, var(--gold), #5a4a1a, var(--gold));
+    box-shadow: 0 0 0 3px var(--bg), 0 0 24px rgba(201,168,76,0.25), 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .avatar-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%; object-fit: cover; object-position: center top;
+    display: block;
+  }
+
+  /* ═══ CONSULTING ═══ */
+  .consulting-grid {
+    width: 100%; display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    animation: fadeInUp 0.5s ease 0.35s both;
+  }
+  .consult-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px;
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+  }
+  .consult-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .consult-card:hover { border-color: var(--gold-border); background: var(--bg-card-hover); }
+  .consult-card:hover::before { opacity: 1; }
+  .consult-icon { font-size: 22px; margin-bottom: 10px; }
+  .consult-title { font-size: 13px; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 5px; }
+  .consult-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  .consult-cta {
+    width: 100%; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px; border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.06));
+    border: 1px solid var(--gold-border);
+    font-family: var(--sans); font-size: 14px; font-weight: 800;
+    color: var(--gold); text-decoration: none; letter-spacing: 0.04em;
+    transition: all 0.25s ease;
+    animation: fadeInUp 0.5s ease 0.38s both;
+  }
+  .consult-cta:hover { background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.1)); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(201,168,76,0.15); }
+
+  /* ═══ TAGLINE ═══ */
+  .tagline {
+    text-align: center; margin-top: 22px;
+    padding: 0 4px;
+    animation: fadeInUp 0.5s ease 0.15s both;
+  }
+  .tagline-main {
+    font-size: 14px; font-weight: 600; color: var(--text-muted);
+    line-height: 1.6; letter-spacing: 0.01em;
+  }
+  .tagline-main strong { color: var(--text); font-weight: 700; }
+  .accent-line {
+    width: 36px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 14px auto 0;
+  }
+
+  /* ═══ BADGE ROW ═══ */
+  .badge-row {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+    margin-top: 18px;
+    animation: fadeInUp 0.5s ease 0.2s both;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    border: 1px solid var(--border); background: var(--bg-card);
+    color: var(--text-muted);
+  }
+  .badge.gold { background: var(--gold-dim); border-color: var(--gold-border); color: var(--gold); }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 28px 0 16px; width: 100%;
+    animation: fadeInUp 0.5s ease 0.25s both;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+  .section-divider-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--text-faint);
+  }
+  .section-divider-icon { font-size: 10px; color: var(--gold); }
+
+  /* ═══ VENTURE CARDS ═══ */
+  .ventures { width: 100%; display: flex; flex-direction: column; gap: 8px; animation: fadeInUp 0.5s ease 0.3s both; }
+
+  .venture-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+  }
+  .venture-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0; background: var(--gold); border-radius: 0 2px 2px 0;
+    transition: width 0.25s;
+  }
+  .venture-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-1px); }
+  .venture-card:hover::before { width: 3px; }
+  .venture-card.featured { border-color: var(--gold-border); background: var(--gold-dim); }
+  .venture-card.featured:hover { border-color: rgba(201,168,76,0.5); }
+
+  .venture-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0; position: relative; z-index: 1;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+  }
+  .venture-card.featured .venture-icon { background: rgba(201,168,76,0.1); border-color: var(--gold-border); }
+
+  .venture-content { flex: 1; min-width: 0; position: relative; z-index: 1; }
+  .venture-name { font-size: 14px; font-weight: 800; letter-spacing: 0.01em; }
+  .venture-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+  .venture-domain {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--text-faint); margin-top: 3px; text-transform: lowercase;
+  }
+
+  .venture-badge {
+    font-size: 8px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 3px 9px; border-radius: 100px;
+    flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .venture-badge.live { background: rgba(80,200,120,0.1); border: 1px solid rgba(80,200,120,0.25); color: #60cc80; }
+  .venture-badge.building { background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold); }
+  .venture-badge.new { background: rgba(100,160,255,0.1); border: 1px solid rgba(100,160,255,0.25); color: #80aaff; }
+
+  .venture-arrow { color: var(--text-faint); font-size: 14px; flex-shrink: 0; margin-left: 4px; position: relative; z-index: 1; }
+  .venture-card:hover .venture-arrow { color: var(--gold); }
+
+  /* ═══ CONNECT LINKS ═══ */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 8px; animation: fadeInUp 0.5s ease 0.4s both; }
+  .link-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.25s ease;
+  }
+  .link-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-1px); }
+  .link-icon { font-size: 22px; flex-shrink: 0; width: 40px; text-align: center; }
+  .link-content { flex: 1; }
+  .link-title { font-size: 14px; font-weight: 700; }
+  .link-subtitle { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .link-arrow { color: var(--text-faint); font-size: 14px; flex-shrink: 0; }
+  .link-card:hover .link-arrow { color: var(--gold); }
+
+  /* ═══ SOCIALS ═══ */
+  .socials {
+    display: flex; gap: 12px; margin-top: 28px;
+    animation: fadeInUp 0.5s ease 0.45s both;
+  }
+  .social-link {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--bg-card); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .social-link:hover { border-color: var(--gold-border); color: var(--gold); background: var(--gold-dim); transform: translateY(-2px); }
+  .social-link svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* ═══ SHARE ═══ */
+  .share-bar {
+    display: flex; justify-content: center; margin-top: 24px;
+    animation: fadeInUp 0.5s ease 0.5s both;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 100px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    color: var(--text-muted); cursor: pointer; letter-spacing: 0.02em;
+    transition: all 0.3s;
+  }
+  .share-btn:hover { border-color: var(--gold-border); color: var(--gold); }
+  .share-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ═══ SHARE OVERLAY ═══ */
+  .share-overlay {
+    position: fixed; inset: 0; z-index: 900;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .share-overlay.open { opacity: 1; pointer-events: auto; }
+  .share-sheet {
+    width: 100%; max-width: 480px;
+    background: #0f0f0f; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px 20px 0 0; padding: 12px 20px 36px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .share-overlay.open .share-sheet { transform: translateY(0); }
+  .share-handle { width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); margin: 0 auto 16px; }
+  .share-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--text); text-align: center; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .share-url {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 16px; margin-bottom: 20px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; cursor: pointer; transition: all 0.3s;
+    font-size: 12px; color: var(--text-muted);
+  }
+  .share-url:hover { border-color: var(--gold-border); color: var(--gold); }
+  .share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .share-option { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; }
+  .share-option span { font-size: 10px; font-weight: 600; color: var(--text-faint); }
+  .share-option:hover span { color: var(--text-muted); }
+  .share-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+  .share-option:hover .share-icon { transform: scale(1.08); }
+  .share-close {
+    width: 100%; padding: 14px; border-radius: var(--radius);
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    color: var(--text-muted); cursor: pointer; transition: all 0.3s;
+  }
+  .share-close:hover { border-color: var(--gold-border); color: var(--gold); }
+
+  /* ═══ TOAST ═══ */
+  .share-toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--gold); color: #000;
+    padding: 12px 28px; border-radius: 100px;
+    font-size: 13px; font-weight: 800; z-index: 999;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.4);
+    opacity: 0; pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ═══ FOOTER ═══ */
+  .footer { margin-top: 28px; text-align: center; animation: fadeInUp 0.5s ease 0.55s both; }
+  .footer-line { width: 40px; height: 1px; background: var(--border); margin: 0 auto 14px; }
+  .footer a { font-size: 11px; color: var(--text-faint); text-decoration: none; letter-spacing: 0.06em; }
+  .footer a:hover { color: var(--gold); }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInUp   { from { opacity: 0; transform: translateY(16px); }  to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 14px 52px; }
+  }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-photo"></div>
+    <div class="hero-photo-fade"></div>
+    <div class="hero-bottom-fade"></div>
+    <div class="hero-top-fade"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Entrepreneur · Builder · Operator</div>
+      <div class="hero-name">Kenneth<br><span>Simmons</span></div>
+    </div>
+  </div>
+
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-ring">
+      <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1772076139/New_Headshot_fsxpjh.jpg" alt="Kenneth Simmons">
+    </div>
+  </div>
+
+  <!-- TAGLINE -->
+  <div class="tagline">
+    <div class="tagline-main">
+      Building <strong>practical AI software</strong> for<br>
+      education, compliance & operations
+    </div>
+    <div class="accent-line"></div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="badge-row">
+    <div class="badge gold">⚡ Founder & CEO, RecruitIQ</div>
+    <div class="badge">🔬 Founder, Praxis Lab</div>
+    <div class="badge">📍 Atlanta, GA</div>
+  </div>
+
+  <!-- VENTURES -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-label">Ventures</div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="ventures">
+
+    <a href="https://myrecruitiq.com" target="_blank" rel="noopener" class="venture-card featured">
+      <div class="venture-icon">🎓</div>
+      <div class="venture-content">
+        <div class="venture-name">RecruitIQ</div>
+        <div class="venture-desc">AI-powered college athletic recruiting platform</div>
+        <div class="venture-domain">myrecruitiq.com</div>
+      </div>
+      <span class="venture-badge live">Live</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://praxislab.co" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">🔬</div>
+      <div class="venture-content">
+        <div class="venture-name">Praxis Lab</div>
+        <div class="venture-desc">AI-powered vertical SaaS innovation studio</div>
+        <div class="venture-domain">praxislab.co</div>
+      </div>
+      <span class="venture-badge live">Live</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://disclosureflow.com" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">📋</div>
+      <div class="venture-content">
+        <div class="venture-name">DisclosureFlow</div>
+        <div class="venture-desc">Federal lobbying compliance, simplified</div>
+        <div class="venture-domain">disclosureflow.com</div>
+      </div>
+      <span class="venture-badge live">Live</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://fundediq.app" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">💰</div>
+      <div class="venture-content">
+        <div class="venture-name">FundedIQ</div>
+        <div class="venture-desc">Intelligent funding & financial intelligence</div>
+        <div class="venture-domain">fundediq.app</div>
+      </div>
+      <span class="venture-badge live">Live</span> target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">🏥</div>
+      <div class="venture-content">
+        <div class="venture-name">Atestra</div>
+        <div class="venture-desc">Healthcare operations & compliance platform</div>
+        <div class="venture-domain">myatestra.com</div>
+      </div>
+      <span class="venture-badge building">Building</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://residencyfit.com" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">🩺</div>
+      <div class="venture-content">
+        <div class="venture-name">ResidencyFit</div>
+        <div class="venture-desc">Medical residency matching & preparation</div>
+        <div class="venture-domain">residencyfit.com</div>
+      </div>
+      <span class="venture-badge building">Building</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://meddeviceaccelerator.com" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">🔬</div>
+      <div class="venture-content">
+        <div class="venture-name">MedDevice Accelerator</div>
+        <div class="venture-desc">Medical device launch & go-to-market platform</div>
+        <div class="venture-domain">meddeviceaccelerator.com</div>
+      </div>
+      <span class="venture-badge new">New</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+    <a href="https://www.myverso.co" target="_blank" rel="noopener" class="venture-card">
+      <div class="venture-icon">⚡</div>
+      <div class="venture-content">
+        <div class="venture-name">Verso</div>
+        <div class="venture-desc">Athlete profile pages, beautifully designed</div>
+        <div class="venture-domain">myverso.co</div>
+      </div>
+      <span class="venture-badge live">Live</span>
+      <span class="venture-arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- CONSULTING -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-label">Consulting Services</div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="consulting-grid">
+    <div class="consult-card">
+      <div class="consult-icon">🤖</div>
+      <div class="consult-title">AI Strategy & Integration</div>
+      <div class="consult-desc">Identify where AI creates real leverage in your business and build it right</div>
+    </div>
+    <div class="consult-card">
+      <div class="consult-icon">🏗️</div>
+      <div class="consult-title">Product Development</div>
+      <div class="consult-desc">From idea to working software — SaaS architecture, roadmaps & execution</div>
+    </div>
+    <div class="consult-card">
+      <div class="consult-icon">⚙️</div>
+      <div class="consult-title">Operations & ERP</div>
+      <div class="consult-desc">Enterprise systems, Oracle EBS, process optimization & digital transformation</div>
+    </div>
+    <div class="consult-card">
+      <div class="consult-icon">🚀</div>
+      <div class="consult-title">Startup Advisory</div>
+      <div class="consult-desc">Go-to-market, fundraising strategy, and scaling from zero to traction</div>
+    </div>
+  </div>
+
+  <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="consult-cta">
+    📅 Book a Meeting with Kenneth →
+  </a>
+
+  <!-- CONNECT -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-label">Connect</div>
+    <div class="section-divider-icon">✦</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://www.instagram.com/iamkensimmons/" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">📸</div>
+      <div class="link-content">
+        <div class="link-title">@iamkensimmons</div>
+        <div class="link-subtitle">Follow on Instagram</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://x.com/iamkensimmons" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div class="link-content">
+        <div class="link-title">@iamkensimmons</div>
+        <div class="link-subtitle">Follow on X</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="link-card">
+      <div class="link-icon">📅</div>
+      <div class="link-content">
+        <div class="link-title">Book a Meeting</div>
+        <div class="link-subtitle">Schedule time with Kenneth via Calendly</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a href="https://www.instagram.com/iamkensimmons/" class="social-link" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://x.com/iamkensimmons" class="social-link" target="_blank" title="X">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://praxislab.co" class="social-link" target="_blank" title="Praxis Lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+    </a>
+    <a href="https://myrecruitiq.com" class="social-link" target="_blank" title="RecruitIQ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar">
+    <button class="share-btn" onclick="openShare()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share My Page
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <a href="https://myverso.page" target="_blank">verso.page</a>
+  </div>
+
+</div>
+
+<!-- SHARE SHEET -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+  <div class="share-sheet" id="shareSheet">
+    <div class="share-handle"></div>
+    <div class="share-title">Share My Page</div>
+    <div class="share-url" onclick="copyLink()">
+      <span>myverso.page/kensimmons</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </div>
+    <div class="share-grid">
+      <a href="#" onclick="shareX(event)" class="share-option">
+        <div class="share-icon" style="background:#000;border:1px solid rgba(255,255,255,.12)">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <span>X / Twitter</span>
+      </a>
+      <a href="#" onclick="shareFB(event)" class="share-option">
+        <div class="share-icon" style="background:#1877F2">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+      <a href="#" onclick="shareWA(event)" class="share-option">
+        <div class="share-icon" style="background:#25D366">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" onclick="shareMsg(event)" class="share-option">
+        <div class="share-icon" style="background:#34C759">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+        </div>
+        <span>Message</span>
+      </a>
+      <a href="#" onclick="shareEmail(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span>Email</span>
+      </a>
+      <a href="#" onclick="copyLink(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <span>Copy Link</span>
+      </a>
+      <a href="#" onclick="shareMore(event)" class="share-option">
+        <div class="share-icon" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <span>More Apps</span>
+      </a>
+    </div>
+    <button class="share-close" onclick="closeShare()">Cancel</button>
+  </div>
+</div>
+
+<div class="share-toast" id="shareToast"></div>
+
+<script>
+  var PAGE_URL   = 'https://myverso.page/kensimmons';
+  var PAGE_TITLE = 'Kenneth Simmons — Entrepreneur & Builder';
+  var SHARE_TEXT = 'Check out Kenneth Simmons\' page ⚡';
+
+  function openShare() {
+    document.getElementById('shareOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeShare(e) {
+    if (!e || e.target.id === 'shareOverlay' || e.target.closest('.share-close')) {
+      document.getElementById('shareOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  function shareX(e) {
+    e.preventDefault();
+    window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL), '_blank', 'width=600,height=400');
+    closeShare();
+  }
+  function shareFB(e) {
+    e.preventDefault();
+    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE_URL) + '&quote=' + encodeURIComponent(SHARE_TEXT), '_blank', 'width=600,height=400');
+    closeShare();
+  }
+  function shareWA(e) {
+    e.preventDefault();
+    window.open('https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL), '_blank');
+    closeShare();
+  }
+  function shareMsg(e) {
+    e.preventDefault();
+    window.location.href = 'sms:?&body=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL);
+    closeShare();
+  }
+  function shareEmail(e) {
+    e.preventDefault();
+    window.location.href = 'mailto:?subject=' + encodeURIComponent(PAGE_TITLE) + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL);
+    closeShare();
+  }
+  function copyLink(e) {
+    if (e) e.preventDefault();
+    var fallback = function() {
+      var ta = document.createElement('textarea');
+      ta.value = PAGE_URL; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+      showToast('✓ Link copied!');
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(PAGE_URL).then(function() { showToast('✓ Link copied!'); }).catch(fallback);
+    } else { fallback(); }
+    closeShare();
+  }
+  function shareMore(e) {
+    e.preventDefault();
+    if (navigator.share) {
+      closeShare();
+      navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL })
+        .catch(function(err) { if (err.name !== 'AbortError') openShare(); });
+    } else { copyLink(e); }
+  }
+  function showToast(msg) {
+    var t = document.getElementById('shareToast');
+    t.textContent = msg; t.classList.add('visible');
+    setTimeout(function() { t.classList.remove('visible'); }, 2400);
+  }
+</script>
+
+</body>
+</html>
