@@ -62,6 +62,16 @@
     background: linear-gradient(to top, var(--bg) 0%, rgba(4,10,24,0.6) 60%, transparent 100%);
     pointer-events: none;
   }
+  .hero-side-l {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 10%;
+    background: linear-gradient(to right, var(--bg), transparent);
+    pointer-events: none;
+  }
+  .hero-side-r {
+    position: absolute; top: 0; bottom: 0; right: 0; width: 10%;
+    background: linear-gradient(to left, var(--bg), transparent);
+    pointer-events: none;
+  }
   .school-badge {
     position: absolute; top: 14px; left: 14px; z-index: 10;
     background: rgba(0,0,0,.5); border: 1px solid rgba(var(--brand-rgb), .35);
@@ -358,6 +368,8 @@
     </video>
     <div class="hero-fade-top"></div>
     <div class="hero-fade-bottom"></div>
+    <div class="hero-side-l"></div>
+    <div class="hero-side-r"></div>
     <div class="school-badge">🦅 Donar Groningen</div>
     <div class="league-badge">BNXT League · NL</div>
   </div>
