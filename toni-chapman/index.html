@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta property="og:title" content="Toni Chapman — @themoodyfoody">
+<meta property="og:description" content="NYT Bestselling Author · Digital Creator · 2M Followers">
+<title>Toni Chapman — themoodyfoody</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #ffebb6;
+    --bg2:      #f5d98e;
+    --bg3:      #eece7a;
+    --cream:    #fff8e0;
+    --espresso: #023861;
+    --terra:    #c4622d;
+    --terra-lt: #e08060;
+    --terra-dim:rgba(196,98,45,0.10);
+    --terra-bd: rgba(196,98,45,0.22);
+    --warm:     #8b6248;
+    --muted:    #9e8878;
+    --faint:    #c4b5a8;
+    --border:   rgba(44,24,16,0.08);
+    --border-md:rgba(44,24,16,0.14);
+    --r:        14px;
+    --serif:    'Cormorant Garant', Georgia, serif;
+    --sans:     'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--sans); color: var(--espresso); background: var(--bg); min-height: 100dvh; overflow-x: hidden; }
+
+  /* ═══ TEXTURE ═══ */
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  .glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 65% 40% at 50% 0%, rgba(196,98,45,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 30% at 80% 70%, rgba(139,98,72,0.05) 0%, transparent 50%);
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 20px 64px; display: flex; flex-direction: column; align-items: center; }
+
+  /* ═══ GIFT BANNER ═══ */
+  .gift-banner {
+    width: 100%; background: var(--espresso); color: rgba(255,255,255,0.7);
+    text-align: center; padding: 10px 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    animation: fadeDown 0.5s ease both;
+  }
+  .gift-banner span { color: var(--terra-lt); }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    width: 100vw; margin-left: calc(-50vw + 50%);
+    position: relative; height: 380px; overflow: hidden;
+    animation: fadeDown 0.6s ease both;
+  }
+  .hero video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  }
+  .hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to top, var(--bg) 0%, rgba(255,235,182,0.6) 60%, transparent 100%); }
+  .hero-top { position: absolute; top: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, var(--bg), transparent); }
+  .hero-side-l { position: absolute; top: 0; bottom: 0; left: 0; width: 10%; background: linear-gradient(to right, var(--bg), transparent); pointer-events: none; }
+  .hero-side-r { position: absolute; top: 0; bottom: 0; right: 0; width: 10%; background: linear-gradient(to left, var(--bg), transparent); pointer-events: none; }
+  .hero-content {
+    position: absolute; bottom: 32px; left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-verified {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(44,24,16,0.55); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 10px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85); backdrop-filter: blur(6px);
+  }
+  .hero-verified::before { content: '✦'; color: var(--terra-lt); font-size: 8px; }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: 42px; font-weight: 700; line-height: 1; color: var(--espresso);
+    letter-spacing: -0.01em; text-shadow: 0 2px 20px rgba(255,235,182,0.8);
+  }
+  .hero-name em { color: var(--terra); font-style: italic; }
+
+  /* ═══ AVATAR ═══ */
+  .avatar-wrap {
+    margin-top: -50px; margin-bottom: 0;
+    position: relative; z-index: 10;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .avatar-ring {
+    width: 96px; height: 96px; border-radius: 50%; padding: 3px;
+    background: linear-gradient(135deg, #c4622d, #8b3a18, #e8a878);
+    box-shadow: 0 0 0 3px var(--bg), 0 4px 24px rgba(196,98,45,0.25);
+  }
+  .avatar-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; display: block; }
+
+  /* ═══ IDENTITY ═══ */
+  .identity { text-align: center; margin-top: 12px; width: 100%; animation: fadeUp 0.5s 0.14s ease both; }
+  .identity-handle { font-size: 13px; font-weight: 700; color: var(--terra); letter-spacing: 0.02em; }
+  .identity-title {
+    font-family: var(--serif); font-size: 15px; font-weight: 400; font-style: italic;
+    color: var(--muted); margin-top: 4px; line-height: 1.5;
+  }
+  .identity-divider { width: 36px; height: 2px; background: linear-gradient(90deg, transparent, var(--terra), transparent); margin: 12px auto 0; }
+
+  /* ═══ STATS ═══ */
+  .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 18px; width: 100%; animation: fadeUp 0.5s 0.18s ease both; }
+  .stat { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 13px 8px; text-align: center; box-shadow: 0 1px 4px rgba(44,24,16,0.05); }
+  .stat-num { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--espresso); line-height: 1; }
+  .stat-label { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+  /* ═══ BADGE ═══ */
+  .nyt-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px; padding: 10px 18px; border-radius: 100px;
+    background: var(--espresso); color: rgba(255,255,255,0.85);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    box-shadow: 0 4px 16px rgba(44,24,16,0.18);
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .nyt-badge-icon { font-size: 14px; }
+
+  /* ═══ SECTION ═══ */
+  .sec { display: flex; align-items: center; gap: 10px; margin: 26px 0 14px; width: 100%; }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+  .sec-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--terra); flex-shrink: 0; }
+  .sec-label { font-family: var(--serif); font-size: 11px; font-weight: 600; font-style: italic; letter-spacing: 0.08em; color: var(--muted); }
+
+  /* ═══ LINK CARDS ═══ */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  .lc {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 14px 16px;
+    text-decoration: none; color: var(--espresso);
+    box-shadow: 0 1px 4px rgba(44,24,16,0.05);
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .lc::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0; background: var(--terra); border-radius: 0 2px 2px 0;
+    transition: width 0.25s;
+  }
+  .lc:hover { border-color: var(--terra-bd); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,98,45,0.10); }
+  .lc:hover::before { width: 3px; }
+  .lc.featured { border-color: var(--terra-bd); background: var(--terra-dim); }
+  .lc-icon { font-size: 22px; width: 42px; height: 42px; border-radius: 11px; background: var(--bg2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+  .lc.featured .lc-icon { background: rgba(196,98,45,0.12); border-color: var(--terra-bd); }
+  .lc-body { flex: 1; position: relative; z-index: 1; }
+  .lc-title { font-size: 14px; font-weight: 800; color: var(--espresso); }
+  .lc-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .lc-domain { font-size: 9px; font-weight: 600; color: var(--faint); margin-top: 2px; }
+  .lc-arrow { color: var(--faint); font-size: 14px; flex-shrink: 0; position: relative; z-index: 1; }
+  .lc:hover .lc-arrow { color: var(--terra); }
+
+  /* ═══ RECIPE CARD ═══ */
+  .recipe-card {
+    width: 100%; background: var(--cream); border: 1px solid var(--border);
+    border-radius: var(--r); overflow: hidden;
+    box-shadow: 0 1px 4px rgba(44,24,16,0.05);
+    text-decoration: none; color: var(--espresso);
+    display: block; transition: all 0.25s;
+  }
+  .recipe-card:hover { border-color: var(--terra-bd); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(196,98,45,0.10); }
+  .recipe-header { padding: 14px 16px 12px; display: flex; align-items: center; gap: 12px; }
+  .recipe-icon { font-size: 28px; }
+  .recipe-meta { flex: 1; }
+  .recipe-eyebrow { font-size: 8px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terra); margin-bottom: 3px; }
+  .recipe-title { font-family: var(--serif); font-size: 17px; font-weight: 700; line-height: 1.2; }
+  .recipe-source { font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .recipe-divider { height: 1px; background: var(--border); margin: 0 16px; }
+  .recipe-tags { display: flex; gap: 6px; padding: 10px 16px; flex-wrap: wrap; }
+  .recipe-tag { font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 100px; background: var(--bg2); border: 1px solid var(--border); color: var(--warm); }
+
+  /* ═══ SOCIALS ═══ */
+  .socials { display: flex; gap: 10px; margin-top: 22px; animation: fadeUp 0.5s 0.38s ease both; }
+  .sb {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--cream); border: 1px solid var(--border);
+    color: var(--muted); text-decoration: none;
+    box-shadow: 0 1px 4px rgba(44,24,16,0.05);
+    transition: all 0.25s;
+  }
+  .sb:hover { border-color: var(--terra-bd); color: var(--terra); background: var(--terra-dim); transform: translateY(-2px); }
+  .sb svg { width: 17px; height: 17px; fill: currentColor; }
+
+  /* ═══ SHARE ═══ */
+  .share-bar { margin-top: 22px; animation: fadeUp 0.5s 0.42s ease both; }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 100px;
+    background: var(--cream); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    color: var(--muted); cursor: pointer; letter-spacing: 0.04em;
+    box-shadow: 0 1px 4px rgba(44,24,16,0.05); transition: all 0.25s;
+  }
+  .share-btn:hover { border-color: var(--terra-bd); color: var(--terra); }
+  .share-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ═══ SHARE OVERLAY ═══ */
+  .share-overlay { position: fixed; inset: 0; z-index: 900; background: rgba(44,24,16,0.4); backdrop-filter: blur(6px); display: flex; align-items: flex-end; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .share-overlay.open { opacity: 1; pointer-events: auto; }
+  .share-sheet { width: 100%; max-width: 480px; background: var(--cream); border: 1px solid var(--border); border-radius: 20px 20px 0 0; padding: 12px 20px 36px; transform: translateY(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 -8px 40px rgba(44,24,16,0.10); }
+  .share-overlay.open .share-sheet { transform: translateY(0); }
+  .share-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 16px; }
+  .share-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--espresso); text-align: center; margin-bottom: 12px; font-style: italic; }
+  .share-url { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; margin-bottom: 20px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.3s; }
+  .share-url:hover { border-color: var(--terra-bd); color: var(--terra); }
+  .share-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+  .share-option { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; }
+  .share-option span { font-size: 10px; font-weight: 600; color: var(--muted); }
+  .share-option:hover span { color: var(--espresso); }
+  .share-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+  .share-option:hover .share-icon { transform: scale(1.08); }
+  .share-close { width: 100%; padding: 14px; border-radius: var(--r); background: var(--bg2); border: 1px solid var(--border); font-family: var(--sans); font-size: 14px; font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.3s; }
+  .share-close:hover { border-color: var(--terra-bd); color: var(--terra); }
+
+  /* ═══ TOAST ═══ */
+  .share-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--espresso); color: #fff; padding: 12px 28px; border-radius: 100px; font-size: 13px; font-weight: 800; z-index: 999; box-shadow: 0 8px 32px rgba(44,24,16,0.22); opacity: 0; pointer-events: none; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ═══ FOOTER ═══ */
+  .footer { margin-top: 28px; text-align: center; animation: fadeUp 0.5s 0.46s ease both; }
+  .footer-line { width: 36px; height: 1px; background: var(--border); margin: 0 auto 12px; }
+  .footer-text { font-size: 10px; color: var(--faint); letter-spacing: 0.06em; }
+  .footer-text a { color: var(--terra); opacity: 0.6; text-decoration: none; }
+  .footer-text a:hover { opacity: 1; }
+
+  @keyframes fadeDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeUp   { from { opacity:0; transform:translateY(16px); }  to { opacity:1; transform:translateY(0); } }
+  .a1{animation:fadeUp 0.5s 0.12s ease both}.a2{animation:fadeUp 0.5s 0.18s ease both}
+  .a3{animation:fadeUp 0.5s 0.22s ease both}.a4{animation:fadeUp 0.5s 0.26s ease both}
+  .a5{animation:fadeUp 0.5s 0.30s ease both}.a6{animation:fadeUp 0.5s 0.34s ease both}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+
+  <!-- GIFT BANNER -->
+  <div class="gift-banner" style="width:100vw;margin-left:calc(-50vw + 50%)">
+    ✦ A gift from <span>Verso</span> — designed just for you ✦
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://res.cloudinary.com/dvpjzek6u/video/upload/v1772081344/toni_jhjhhc.mp4" type="video/mp4">
+    </video>
+    <div class="hero-side-l"></div>
+    <div class="hero-side-r"></div>
+    <div class="hero-top"></div>
+    <div class="hero-bottom"></div>
+    <div class="hero-content">
+      <div class="hero-verified">Verified Creator · 2M Followers</div>
+      <div class="hero-name">Toni <em>Chapman</em></div>
+    </div>
+  </div>
+
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-ring">
+      <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1772081122/toni_nbfy7w.png" alt="Toni Chapman">
+    </div>
+  </div>
+
+  <!-- IDENTITY -->
+  <div class="identity a1">
+    <div class="identity-handle">@themoodyfoody</div>
+    <div class="identity-title">Digital Creator · New York Times Bestselling Author</div>
+    <div class="identity-divider"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats a2">
+    <div class="stat"><div class="stat-num">2M</div><div class="stat-label">Followers</div></div>
+    <div class="stat"><div class="stat-num">426</div><div class="stat-label">Posts</div></div>
+    <div class="stat"><div class="stat-num">NYT</div><div class="stat-label">Bestseller</div></div>
+  </div>
+
+  <!-- NYT BADGE -->
+  <div class="nyt-badge">
+    <span class="nyt-badge-icon">📚</span>
+    Author of <em style="font-family:var(--serif);font-style:italic;color:rgba(255,200,150,0.9);margin-left:4px">"Everything's Good"</em>
+  </div>
+
+  <!-- LINKS -->
+  <div class="sec a3"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Links</div><div class="sec-dot"></div><div class="sec-line"></div></div>
+
+  <div class="links a3">
+    <a href="https://everythingsgoodcookbook.com" target="_blank" rel="noopener" class="lc featured">
+      <div class="lc-icon">📖</div>
+      <div class="lc-body">
+        <div class="lc-title">Order My Cookbook 😍</div>
+        <div class="lc-sub">Everything's Good — get your copy now</div>
+        <div class="lc-domain">everythingsgoodcookbook.com</div>
+      </div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://tonisrecipes.com" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">🍽️</div>
+      <div class="lc-body">
+        <div class="lc-title">Free Recipes</div>
+        <div class="lc-sub">All my go-to recipes, free for you</div>
+        <div class="lc-domain">tonisrecipes.com</div>
+      </div>
+      <span class="lc-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- FEATURED RECIPE -->
+  <div class="sec a4"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Featured Recipe</div><div class="sec-dot"></div><div class="sec-line"></div></div>
+
+  <a href="https://cooking.nytimes.com/recipes/768246869-creamy-lasagna-soup" target="_blank" rel="noopener" class="recipe-card a4">
+    <div class="recipe-header">
+      <div class="recipe-icon">🍜</div>
+      <div class="recipe-meta">
+        <div class="recipe-eyebrow">As seen in NYT Cooking</div>
+        <div class="recipe-title">Creamy Lasagna Soup</div>
+        <div class="recipe-source">cooking.nytimes.com</div>
+      </div>
+    </div>
+    <div class="recipe-divider"></div>
+    <div class="recipe-tags">
+      <span class="recipe-tag">🔥 Trending</span>
+      <span class="recipe-tag">30 min</span>
+      <span class="recipe-tag">Comfort Food</span>
+      <span class="recipe-tag">NYT Cooking</span>
+    </div>
+  </a>
+
+  <!-- HIGHLIGHTS -->
+  <div class="sec a5"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Highlights</div><div class="sec-dot"></div><div class="sec-line"></div></div>
+
+  <div class="links a5">
+    <a href="https://cooking.nytimes.com" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">🗞️</div>
+      <div class="lc-body"><div class="lc-title">NYT Recipes</div><div class="lc-sub">My recipes featured in NYT Cooking</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://www.goodmorningamerica.com" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">📺</div>
+      <div class="lc-body"><div class="lc-title">Good Morning America</div><div class="lc-sub">Watch my GMA segment</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://www.instagram.com/stories/highlights/themoodyfoody/" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">🎁</div>
+      <div class="lc-body"><div class="lc-title">Giveaways</div><div class="lc-sub">Current &amp; past giveaways</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://www.instagram.com/stories/highlights/themoodyfoody/" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">✍️</div>
+      <div class="lc-body"><div class="lc-title">Writing</div><div class="lc-sub">Behind the book &amp; author journey</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://tonisrecipes.com" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">🍳</div>
+      <div class="lc-body"><div class="lc-title">Food</div><div class="lc-sub">All things delicious</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- CONNECT -->
+  <div class="sec a5"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Connect</div><div class="sec-dot"></div><div class="sec-line"></div></div>
+
+  <div class="links a5">
+    <a href="https://www.instagram.com/themoodyfoody/" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">📸</div>
+      <div class="lc-body"><div class="lc-title">@themoodyfoody</div><div class="lc-sub">Follow on Instagram · 2M followers</div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#2b5f4445426b594a454c4e465b05484446" class="lc">
+      <div class="lc-icon">✉️</div>
+      <div class="lc-body"><div class="lc-title">Brand Partnerships</div><div class="lc-sub"><span class="__cf_email__" data-cfemail="d0a4bfbeb990a2b1beb7b5bda0feb3bfbd">[email&#160;protected]</span></div></div>
+      <span class="lc-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a href="https://www.instagram.com/themoodyfoody/" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://tonisrecipes.com" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+    </a>
+    <a href="https://everythingsgoodcookbook.com" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#fe8a919097be8c9f90999b938ed09d9193" class="sb">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar">
+    <button class="share-btn" onclick="openShare()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share My Page
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">Built with <a href="https://www.myverso.co" target="_blank">Verso</a> · © 2026</div>
+  </div>
+
+</div>
+
+<!-- SHARE SHEET -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+  <div class="share-sheet">
+    <div class="share-handle"></div>
+    <div class="share-title">Share Toni's Page</div>
+    <div class="share-url" onclick="copyLink()">
+      <span>myverso.page/themoodyfoody</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </div>
+    <div class="share-grid">
+      <a href="#" onclick="shareX(event)" class="share-option"><div class="share-icon" style="background:#000;border:1px solid #e5e7eb"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><span>X / Twitter</span></a>
+      <a href="#" onclick="shareFB(event)" class="share-option"><div class="share-icon" style="background:#1877F2"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div><span>Facebook</span></a>
+      <a href="#" onclick="shareWA(event)" class="share-option"><div class="share-icon" style="background:#25D366"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><span>WhatsApp</span></a>
+      <a href="#" onclick="shareMsg(event)" class="share-option"><div class="share-icon" style="background:#34C759"><svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg></div><span>Message</span></a>
+      <a href="#" onclick="shareEmail(event)" class="share-option"><div class="share-icon" style="background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#c4622d" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>Email</span></a>
+      <a href="#" onclick="copyLink(event)" class="share-option"><div class="share-icon" style="background:var(--bg2);border:1px solid var(--border)"><svg viewBox="0 0 24 24" fill="none" stroke="#9e8878" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div><span>Copy Link</span></a>
+      <a href="#" onclick="shareMore(event)" class="share-option"><div class="share-icon" style="background:rgba(196,98,45,0.08);border:1px solid rgba(196,98,45,0.2)"><svg viewBox="0 0 24 24" fill="none" stroke="#c4622d" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div><span>More Apps</span></a>
+    </div>
+    <button class="share-close" onclick="closeShare()">Cancel</button>
+  </div>
+</div>
+<div class="share-toast" id="shareToast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  (function() {
+    var vid = document.querySelector('video');
+    if (!vid) return;
+    var tryPlay = function() {
+      vid.muted = true;
+      var p = vid.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          document.addEventListener('touchstart', function handler() {
+            vid.play();
+            document.removeEventListener('touchstart', handler);
+          }, { once: true });
+        });
+      }
+    };
+    if (document.readyState === 'complete') { tryPlay(); }
+    else { window.addEventListener('load', tryPlay); }
+  })();
+
+  var PAGE_URL   = 'https://myverso.page/themoodyfoody';
+  var PAGE_TITLE = 'Toni Chapman — @themoodyfoody';
+  var SHARE_TEXT = 'Check out Toni Chapman\'s page 🍽️✨';
+  function openShare(){document.getElementById('shareOverlay').classList.add('open');document.body.style.overflow='hidden'}
+  function closeShare(e){if(!e||e.target.id==='shareOverlay'||e.target.closest('.share-close')){document.getElementById('shareOverlay').classList.remove('open');document.body.style.overflow=''}}
+  function shareX(e){e.preventDefault();window.open('https://x.com/intent/tweet?text='+encodeURIComponent(SHARE_TEXT+' '+PAGE_URL),'_blank','width=600,height=400');closeShare()}
+  function shareFB(e){e.preventDefault();window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(PAGE_URL),'_blank','width=600,height=400');closeShare()}
+  function shareWA(e){e.preventDefault();window.open('https://wa.me/?text='+encodeURIComponent(SHARE_TEXT+'\n'+PAGE_URL),'_blank');closeShare()}
+  function shareMsg(e){e.preventDefault();window.location.href='sms:?&body='+encodeURIComponent(SHARE_TEXT+'\n'+PAGE_URL);closeShare()}
+  function shareEmail(e){e.preventDefault();window.location.href='mailto:?subject='+encodeURIComponent(PAGE_TITLE)+'&body='+encodeURIComponent(SHARE_TEXT+'\n\n'+PAGE_URL);closeShare()}
+  function copyLink(e){if(e)e.preventDefault();var f=function(){var t=document.createElement('textarea');t.value=PAGE_URL;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);showToast('✓ Link copied!')};if(navigator.clipboard){navigator.clipboard.writeText(PAGE_URL).then(function(){showToast('✓ Link copied!')}).catch(f)}else{f()}closeShare()}
+  function shareMore(e){e.preventDefault();if(navigator.share){closeShare();navigator.share({title:PAGE_TITLE,text:SHARE_TEXT,url:PAGE_URL}).catch
