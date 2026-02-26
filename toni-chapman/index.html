@@ -472,4 +472,8 @@
   function shareMsg(e){e.preventDefault();window.location.href='sms:?&body='+encodeURIComponent(SHARE_TEXT+'\n'+PAGE_URL);closeShare()}
   function shareEmail(e){e.preventDefault();window.location.href='mailto:?subject='+encodeURIComponent(PAGE_TITLE)+'&body='+encodeURIComponent(SHARE_TEXT+'\n\n'+PAGE_URL);closeShare()}
   function copyLink(e){if(e)e.preventDefault();var f=function(){var t=document.createElement('textarea');t.value=PAGE_URL;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);showToast('✓ Link copied!')};if(navigator.clipboard){navigator.clipboard.writeText(PAGE_URL).then(function(){showToast('✓ Link copied!')}).catch(f)}else{f()}closeShare()}
-  function shareMore(e){e.preventDefault();if(navigator.share){closeShare();navigator.share({title:PAGE_TITLE,text:SHARE_TEXT,url:PAGE_URL}).catch
+  function shareMore(e){e.preventDefault();if(navigator.share){closeShare();navigator.share({title:PAGE_TITLE,text:SHARE_TEXT,url:PAGE_URL}).catch(function(err){if(err.name!=='AbortError')openShare()})}else{copyLink(e)}}
+  function showToast(msg){var t=document.getElementById('shareToast');t.textContent=msg;t.classList.add('visible');setTimeout(function(){t.classList.remove('visible')},2400)}
+</script>
+</body>
+</html>
