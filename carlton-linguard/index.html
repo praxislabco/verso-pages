@@ -670,6 +670,26 @@
 <div class="share-toast" id="shareToast"></div>
 
 <script>
+  // Force autoplay on iOS Safari
+  (function() {
+    var vid = document.querySelector('video');
+    if (!vid) return;
+    var tryPlay = function() {
+      vid.muted = true;
+      var p = vid.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          document.addEventListener('touchstart', function handler() {
+            vid.play();
+            document.removeEventListener('touchstart', handler);
+          }, { once: true });
+        });
+      }
+    };
+    if (document.readyState === 'complete') { tryPlay(); }
+    else { window.addEventListener('load', tryPlay); }
+  })();
+
   var PAGE_URL   = 'https://myverso.page/carlton-linguard';
   var PAGE_TITLE = 'Carlton Linguard Jr. — Donar Groningen';
   var SHARE_TEXT = 'Check out Carlton Linguard Jr.\'s page 🏀🦅';
