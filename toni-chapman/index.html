@@ -66,10 +66,10 @@
     width: 120%; height: 120%; object-fit: cover; object-position: center top;
     transform: scale(0.75); transform-origin: center top;
   }
-  .hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 180px; background: linear-gradient(to top, var(--bg) 0%, rgba(255,235,182,0.6) 60%, transparent 100%); }
-  .hero-top { position: absolute; top: 0; left: 0; right: 0; height: 60px; background: linear-gradient(to bottom, var(--bg), transparent); }
-  .hero-side-l { position: absolute; top: 0; bottom: 0; left: 0; width: 10%; background: linear-gradient(to right, var(--bg), transparent); pointer-events: none; }
-  .hero-side-r { position: absolute; top: 0; bottom: 0; right: 0; width: 10%; background: linear-gradient(to left, var(--bg), transparent); pointer-events: none; }
+  .hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 130px; background: linear-gradient(to top, var(--bg), transparent); z-index: 2; }
+  .hero-top { position: absolute; top: 0; left: 0; right: 0; height: 50px; background: linear-gradient(to bottom, var(--bg), transparent); z-index: 2; }
+  .hero-side-l { position: absolute; top: 0; bottom: 0; left: 0; width: 14%; background: linear-gradient(to right, var(--bg), transparent); pointer-events: none; z-index: 2; }
+  .hero-side-r { position: absolute; top: 0; bottom: 0; right: 0; width: 14%; background: linear-gradient(to left, var(--bg), transparent); pointer-events: none; z-index: 2; }
   .hero-content {
     position: absolute; bottom: 32px; left: 0; right: 0;
     display: flex; flex-direction: column; align-items: center;
