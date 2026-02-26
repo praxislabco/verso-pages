@@ -30,7 +30,8 @@
   .hero-lines{position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 40px,rgba(117,175,155,0.06) 40px,rgba(117,175,155,0.06) 41px)}
   .hero-bottom{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--bg))}
   .hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:24px}
-  .hero-icon{width:52px;height:52px;border-radius:14px;margin-bottom:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 24px rgba(0,0,0,0.2)}
+  .hero-icon{width:72px;height:72px;border-radius:16px;margin-bottom:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.2)}
+  .hero-icon img{width:100%;height:100%;object-fit:contain;padding:8px}
   .hero-wordmark{font-family:var(--serif);font-size:30px;font-weight:900;color:#fff}
   .hero-wordmark .lab{color:var(--teal-lt);font-style:italic}
   .hero-tagline{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:6px}
@@ -72,15 +73,33 @@
   .vc-arrow{color:var(--gray-lt);font-size:14px;flex-shrink:0;margin-left:4px;position:relative;z-index:1}
   .vc:hover .vc-arrow{color:var(--teal)}
 
-  /* CONSULTING */
-  .consult-grid{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .cc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:16px;box-shadow:0 1px 4px rgba(29,49,84,0.04);transition:all 0.25s;position:relative;overflow:hidden}
-  .cc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);opacity:0;transition:opacity 0.25s}
-  .cc:hover{border-color:var(--teal-bd);transform:translateY(-1px);box-shadow:0 4px 16px rgba(29,49,84,0.08)}
-  .cc:hover::after{opacity:1}
-  .cc-icon{font-size:22px;margin-bottom:10px}
-  .cc-title{font-size:12px;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:5px}
-  .cc-desc{font-size:10.5px;color:var(--gray);line-height:1.5}
+  /* CONSULTING OFFER CARDS */
+  .offers{width:100%;display:flex;flex-direction:column;gap:10px}
+  .offer-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--navy);display:block;position:relative;transition:border-color 0.25s,transform 0.2s;box-shadow:0 1px 4px rgba(29,49,84,0.05)}
+  .offer-card:hover{border-color:var(--teal-bd);transform:translateY(-2px);box-shadow:0 6px 20px rgba(29,49,84,0.10)}
+  .offer-card.featured{border-color:var(--teal-bd);background:linear-gradient(135deg,#f0f6f4,#f8f9f9)}
+  .offer-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent)}
+  .offer-top{padding:16px 16px 12px;display:flex;align-items:flex-start;gap:13px}
+  .offer-icon{width:44px;height:44px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--bg-card2);border:1px solid var(--border)}
+  .offer-card.featured .offer-icon{background:rgba(117,175,155,0.14);border-color:var(--teal-bd)}
+  .offer-meta{flex:1}
+  .offer-tag{font-size:8px;font-weight:800;letter-spacing:0.10em;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
+  .offer-title{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.2;color:var(--navy)}
+  .offer-subtitle{font-size:11px;color:var(--gray);margin-top:3px;line-height:1.5}
+  .offer-price-wrap{text-align:right;flex-shrink:0}
+  .offer-price{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--navy)}
+  .offer-price-note{font-size:9px;color:var(--gray);margin-top:2px}
+  .offer-divider{height:1px;background:var(--border);margin:0 16px}
+  .offer-features{padding:12px 16px 14px;display:flex;flex-direction:column;gap:7px}
+  .offer-feature{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;color:var(--gray);line-height:1.4}
+  .offer-check{width:15px;height:15px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(117,175,155,0.12);border:1px solid var(--teal-bd);display:flex;align-items:center;justify-content:center}
+  .offer-check svg{width:8px;height:8px;stroke:var(--teal);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .offer-feature strong{color:var(--navy);font-weight:700}
+  .offer-cta{margin:0 16px 16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:0.04em;transition:all 0.25s}
+  .offer-card.featured .offer-cta{background:var(--navy);color:#fff}
+  .offer-card.featured .offer-cta:hover{background:var(--navy-lt)}
+  .offer-card:not(.featured) .offer-cta{background:var(--bg-card2);border:1px solid var(--border);color:var(--gray)}
+  .offer-card:not(.featured):hover .offer-cta{border-color:var(--teal-bd);color:var(--teal)}
 
   /* CTAS */
   .cta-primary{width:100%;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:9px;padding:15px;border-radius:var(--r);background:var(--navy);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.04em;text-decoration:none;transition:all 0.25s;box-shadow:0 4px 16px rgba(29,49,84,0.18)}
@@ -154,7 +173,7 @@
     <div class="hero-lines"></div>
     <div class="hero-bottom"></div>
     <div class="hero-content">
-      <div class="hero-icon">🔬</div>
+      <div class="hero-icon"><img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1767803799/Gemini_Generated_Image_p5172cp5172cp517_1_laf68s_1_sid42j.png" alt="Praxis Lab"></div>
       <div class="hero-wordmark">Praxis <span class="lab">Lab</span></div>
       <div class="hero-tagline">Innovation Studio</div>
     </div>
@@ -203,14 +222,99 @@
 
   <div class="sec a4"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Consulting Services</div><div class="sec-dot"></div><div class="sec-line"></div></div>
 
-  <div class="consult-grid a4">
-    <div class="cc"><div class="cc-icon">🤖</div><div class="cc-title">AI Strategy &amp; Integration</div><div class="cc-desc">Find where AI creates real leverage in your business</div></div>
-    <div class="cc"><div class="cc-icon">🏗️</div><div class="cc-title">Product Development</div><div class="cc-desc">SaaS architecture, roadmaps &amp; MVP execution</div></div>
-    <div class="cc"><div class="cc-icon">⚙️</div><div class="cc-title">Operations &amp; ERP</div><div class="cc-desc">Enterprise systems, Oracle EBS &amp; digital transformation</div></div>
-    <div class="cc"><div class="cc-icon">🚀</div><div class="cc-title">Startup Advisory</div><div class="cc-desc">Go-to-market, fundraising &amp; scaling from zero</div></div>
+  <div class="offers a4">
+
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="offer-card featured">
+      <div class="offer-top">
+        <div class="offer-icon">🤖</div>
+        <div class="offer-meta">
+          <div class="offer-tag">Most Popular</div>
+          <div class="offer-title">AI Strategy Session</div>
+          <div class="offer-subtitle">90-min deep dive — find where AI moves the needle in your org</div>
+        </div>
+        <div class="offer-price-wrap">
+          <div class="offer-price">$497</div>
+          <div class="offer-price-note">one-time</div>
+        </div>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-features">
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>AI opportunity audit</strong> of your current tools &amp; workflows</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Custom roadmap</strong> with quick wins and 90-day priorities</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Written summary</strong> delivered within 48 hours</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>30-day follow-up</strong> check-in included</span></div>
+      </div>
+      <div class="offer-cta">Book Your Session →</div>
+    </a>
+
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="offer-card">
+      <div class="offer-top">
+        <div class="offer-icon">🏗️</div>
+        <div class="offer-meta">
+          <div class="offer-tag">Product</div>
+          <div class="offer-title">Product Sprint</div>
+          <div class="offer-subtitle">From concept to clickable prototype in 2 weeks</div>
+        </div>
+        <div class="offer-price-wrap">
+          <div class="offer-price">$2,500</div>
+          <div class="offer-price-note">flat rate</div>
+        </div>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-features">
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Scope &amp; architecture</strong> — stack decisions, data model, user flows</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Working prototype</strong> or MVP ready for testing</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Go-to-market brief</strong> included</span></div>
+      </div>
+      <div class="offer-cta">Schedule a Call →</div>
+    </a>
+
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="offer-card">
+      <div class="offer-top">
+        <div class="offer-icon">⚙️</div>
+        <div class="offer-meta">
+          <div class="offer-tag">Enterprise</div>
+          <div class="offer-title">Operations Transformation</div>
+          <div class="offer-subtitle">ERP, automation &amp; digital transformation for growing teams</div>
+        </div>
+        <div class="offer-price-wrap">
+          <div class="offer-price">Custom</div>
+          <div class="offer-price-note">scoped</div>
+        </div>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-features">
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Process audit</strong> — identify bottlenecks, manual work &amp; waste</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Systems design</strong> — Oracle EBS, no-code &amp; AI automation stacks</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Implementation support</strong> with your team or ours</span></div>
+      </div>
+      <div class="offer-cta">Get a Custom Quote →</div>
+    </a>
+
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="offer-card">
+      <div class="offer-top">
+        <div class="offer-icon">🚀</div>
+        <div class="offer-meta">
+          <div class="offer-tag">Founders</div>
+          <div class="offer-title">Startup Advisory</div>
+          <div class="offer-subtitle">Monthly advisory retainer for early-stage founders</div>
+        </div>
+        <div class="offer-price-wrap">
+          <div class="offer-price">$1,500</div>
+          <div class="offer-price-note">/month</div>
+        </div>
+      </div>
+      <div class="offer-divider"></div>
+      <div class="offer-features">
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>2 × monthly calls</strong> — strategy, product &amp; growth reviews</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Async Slack access</strong> for quick questions between calls</span></div>
+        <div class="offer-feature"><div class="offer-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7 8,3"/></svg></div><span><strong>Network introductions</strong> — investors, partners &amp; talent</span></div>
+      </div>
+      <div class="offer-cta">Apply for Advisory →</div>
+    </a>
+
   </div>
 
-  <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="cta-primary a5">📅 Book a Meeting →</a>
   <a href="https://praxislab.co" target="_blank" rel="noopener" class="cta-secondary a5">🔬 Visit Praxis Lab →</a>
 
   <div class="sec a6"><div class="sec-line"></div><div class="sec-dot"></div><div class="sec-label">Connect</div><div class="sec-dot"></div><div class="sec-line"></div></div>
