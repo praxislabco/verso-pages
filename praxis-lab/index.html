@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta property="og:title" content="Praxis Lab — AI Innovation Studio">
+<meta property="og:description" content="We build practical AI software for education, compliance & operations.">
+<title>Praxis Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #f8f9f9;
+    --bg-card:    #ffffff;
+    --bg-card2:   #f2f4f5;
+    --navy:       #1d3154;
+    --teal:       #75af9b;
+    --teal-dim:   rgba(117,175,155,0.12);
+    --teal-bd:    rgba(117,175,155,0.30);
+    --teal-lt:    #8ec4b2;
+    --gray:       #8c8f8f;
+    --gray-lt:    #b8baba;
+    --border:     rgba(29,49,84,0.08);
+    --border-md:  rgba(29,49,84,0.14);
+    --text:       #1d3154;
+    --text-muted: #8c8f8f;
+    --r:          14px;
+    --serif:      'Playfair Display', Georgia, serif;
+    --sans:       'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--bg);
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* ═══ SUBTLE TEXTURE ═══ */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  /* ═══ AMBIENT ═══ */
+  .glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(117,175,155,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 90% 80%, rgba(29,49,84,0.04) 0%, transparent 50%);
+  }
+
+  .wrap {
+    position: relative; z-index: 1;
+    max-width: 480px; margin: 0 auto;
+    padding: 0 20px 64px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    animation: fadeDown 0.6s ease both;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    background: url('https://res.cloudinary.com/dvpjzek6u/image/upload/v1772077300/kenhero_fzntyk.png') center center / cover no-repeat;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(248,249,249,0.05) 0%,
+      transparent 30%,
+      rgba(248,249,249,0.4) 70%,
+      var(--bg) 100%
+    );
+  }
+  .hero-overlay-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+  }
+  /* subtle color tint to tie hero to brand */
+  .hero-tint {
+    position: absolute; inset: 0;
+    background: rgba(29,49,84,0.08);
+    mix-blend-mode: multiply;
+  }
+
+  /* ═══ AVATAR ═══ */
+  .avatar-wrap {
+    margin-top: -48px; margin-bottom: 0;
+    position: relative; z-index: 10;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .avatar-ring {
+    width: 96px; height: 96px; border-radius: 50%; padding: 3px;
+    background: linear-gradient(135deg, var(--teal), #1d3154, var(--teal));
+    box-shadow: 0 0 0 3px var(--bg), 0 4px 24px rgba(29,49,84,0.15);
+  }
+  .avatar-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%; object-fit: cover; object-position: center top; display: block;
+  }
+
+  /* ═══ IDENTITY ═══ */
+  .identity {
+    text-align: center; margin-top: 14px;
+    animation: fadeUp 0.5s 0.15s ease both;
+  }
+  .identity-logo {
+    font-family: var(--serif);
+    font-size: 32px; font-weight: 900;
+    letter-spacing: -0.01em; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .identity-logo .praxis { color: var(--navy); }
+  .identity-logo .lab { color: var(--teal); font-style: italic; }
+  .identity-studio {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gray);
+  }
+  .identity-bio {
+    font-size: 13px; color: var(--gray);
+    margin-top: 10px; line-height: 1.65;
+    padding: 0 8px;
+  }
+  .identity-divider {
+    width: 36px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    margin: 14px auto 0;
+  }
+
+  /* ═══ STATS ═══ */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-top: 20px; width: 100%;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .stat {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 13px 8px; text-align: center;
+    box-shadow: 0 1px 4px rgba(29,49,84,0.05);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 700;
+    color: var(--navy); line-height: 1;
+  }
+  .stat-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gray); margin-top: 4px;
+  }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .sec {
+    display: flex; align-items: center; gap: 10px;
+    margin: 26px 0 14px; width: 100%;
+    animation: fadeUp 0.5s 0.22s ease both;
+  }
+  .sec-line { flex: 1; height: 1px; background: var(--border); }
+  .sec-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .sec-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gray-lt);
+  }
+
+  /* ═══ VENTURE CARDS ═══ */
+  .ventures { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+
+  .vc {
+    display: flex; align-items: center; gap: 13px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 13px 15px;
+    text-decoration: none; color: var(--text);
+    box-shadow: 0 1px 4px rgba(29,49,84,0.04);
+    transition: all 0.25s ease; position: relative; overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+  .vc::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0; background: var(--teal); border-radius: 0 2px 2px 0;
+    transition: width 0.25s;
+  }
+  .vc:hover { border-color: var(--teal-bd); box-shadow: 0 4px 16px rgba(29,49,84,0.08); transform: translateY(-1px); }
+  .vc:hover::before { width: 3px; }
+  .vc.featured { border-color: var(--teal-bd); background: var(--teal-dim); }
+  .vc.featured:hover { border-color: var(--teal); }
+
+  .vc-icon {
+    width: 42px; height: 42px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+    background: var(--bg-card2); border: 1px solid var(--border);
+    position: relative; z-index: 1;
+  }
+  .vc.featured .vc-icon { background: rgba(117,175,155,0.15); border-color: var(--teal-bd); }
+
+  .vc-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
+  .vc-name { font-size: 14px; font-weight: 800; color: var(--navy); }
+  .vc-desc { font-size: 11px; color: var(--gray); margin-top: 2px; line-height: 1.4; }
+  .vc-domain { font-size: 9px; font-weight: 600; color: var(--gray-lt); margin-top: 3px; letter-spacing: 0.04em; }
+
+  .vc-badge {
+    font-size: 8px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 3px 9px; border-radius: 100px;
+    flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .vc-badge.live { background: rgba(117,175,155,0.12); border: 1px solid var(--teal-bd); color: var(--teal); }
+  .vc-badge.building { background: rgba(140,143,143,0.1); border: 1px solid rgba(140,143,143,0.2); color: var(--gray); }
+
+  .vc-arrow { color: var(--gray-lt); font-size: 14px; flex-shrink: 0; margin-left: 4px; position: relative; z-index: 1; }
+  .vc:hover .vc-arrow { color: var(--teal); }
+
+  /* ═══ CONSULTING CARDS ═══ */
+  .consult-grid {
+    width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    animation: fadeUp 0.5s 0.28s ease both;
+  }
+  .cc {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 15px;
+    box-shadow: 0 1px 4px rgba(29,49,84,0.04);
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .cc::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal), transparent);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .cc:hover { border-color: var(--teal-bd); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(29,49,84,0.08); }
+  .cc:hover::before { opacity: 1; }
+  .cc-icon { font-size: 20px; margin-bottom: 9px; }
+  .cc-title { font-size: 12px; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 4px; }
+  .cc-desc { font-size: 10.5px; color: var(--gray); line-height: 1.5; }
+
+  .consult-cta {
+    width: 100%; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 15px; border-radius: var(--r);
+    background: var(--navy); color: #fff;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.04em;
+    text-decoration: none; transition: all 0.25s;
+    box-shadow: 0 4px 16px rgba(29,49,84,0.18);
+    animation: fadeUp 0.5s 0.30s ease both;
+  }
+  .consult-cta:hover { background: #243d68; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(29,49,84,0.24); }
+
+  /* ═══ CONNECT LINKS ═══ */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 8px; animation: fadeUp 0.5s 0.34s ease both; }
+  .lc {
+    display: flex; align-items: center; gap: 13px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--r); padding: 13px 15px;
+    text-decoration: none; color: var(--text);
+    box-shadow: 0 1px 4px rgba(29,49,84,0.04);
+    transition: all 0.25s;
+  }
+  .lc:hover { border-color: var(--teal-bd); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(29,49,84,0.08); }
+  .lc-icon { font-size: 20px; width: 38px; text-align: center; flex-shrink: 0; }
+  .lc-body { flex: 1; }
+  .lc-title { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .lc-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
+  .lc-arrow { color: var(--gray-lt); font-size: 14px; }
+  .lc:hover .lc-arrow { color: var(--teal); }
+
+  /* ═══ SOCIALS ═══ */
+  .socials {
+    display: flex; gap: 10px; margin-top: 24px;
+    animation: fadeUp 0.5s 0.38s ease both;
+  }
+  .sb {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--gray); text-decoration: none;
+    box-shadow: 0 1px 4px rgba(29,49,84,0.04);
+    transition: all 0.25s;
+  }
+  .sb:hover { border-color: var(--teal-bd); color: var(--teal); background: var(--teal-dim); transform: translateY(-2px); }
+  .sb svg { width: 17px; height: 17px; fill: currentColor; }
+
+  /* ═══ SHARE ═══ */
+  .share-bar {
+    margin-top: 22px;
+    animation: fadeUp 0.5s 0.42s ease both;
+  }
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 100px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    color: var(--gray); cursor: pointer; letter-spacing: 0.04em;
+    box-shadow: 0 1px 4px rgba(29,49,84,0.05);
+    transition: all 0.25s;
+  }
+  .share-btn:hover { border-color: var(--teal-bd); color: var(--teal); }
+  .share-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ═══ SHARE OVERLAY ═══ */
+  .share-overlay {
+    position: fixed; inset: 0; z-index: 900;
+    background: rgba(29,49,84,0.35); backdrop-filter: blur(6px);
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .share-overlay.open { opacity: 1; pointer-events: auto; }
+  .share-sheet {
+    width: 100%; max-width: 480px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 20px 20px 0 0; padding: 12px 20px 36px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 -8px 40px rgba(29,49,84,0.12);
+  }
+  .share-overlay.open .share-sheet { transform: translateY(0); }
+  .share-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 0 auto 16px; }
+  .share-title { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 12px; }
+  .share-url {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 16px; margin-bottom: 20px;
+    background: var(--bg-card2); border: 1px solid var(--border);
+    border-radius: 10px; cursor: pointer;
+    font-size: 12px; color: var(--gray); transition: all 0.3s;
+  }
+  .share-url:hover { border-color: var(--teal-bd); color: var(--teal); }
+  .share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .share-option { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; }
+  .share-option span { font-size: 10px; font-weight: 600; color: var(--gray); }
+  .share-option:hover span { color: var(--navy); }
+  .share-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+  .share-option:hover .share-icon { transform: scale(1.08); }
+  .share-close {
+    width: 100%; padding: 14px; border-radius: var(--r);
+    background: var(--bg-card2); border: 1px solid var(--border);
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    color: var(--gray); cursor: pointer; transition: all 0.3s;
+  }
+  .share-close:hover { border-color: var(--teal-bd); color: var(--teal); }
+
+  /* ═══ TOAST ═══ */
+  .share-toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--navy); color: #fff;
+    padding: 12px 28px; border-radius: 100px;
+    font-size: 13px; font-weight: 800; z-index: 999;
+    box-shadow: 0 8px 32px rgba(29,49,84,0.25);
+    opacity: 0; pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .share-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ═══ FOOTER ═══ */
+  .footer {
+    margin-top: 28px; text-align: center;
+    animation: fadeUp 0.5s 0.46s ease both;
+  }
+  .footer-line { width: 36px; height: 1px; background: var(--border); margin: 0 auto 12px; }
+  .footer-text { font-size: 10px; color: var(--gray-lt); letter-spacing: 0.06em; }
+  .footer-text a { color: var(--teal); text-decoration: none; opacity: 0.7; }
+  .footer-text a:hover { opacity: 1; }
+
+  /* ═══ ANIMATION ═══ */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp   { from { opacity: 0; transform: translateY(16px); }  to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-tint"></div>
+    <div class="hero-overlay-top"></div>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- AVATAR -->
+  <div class="avatar-wrap">
+    <div class="avatar-ring">
+      <img src="https://res.cloudinary.com/dvpjzek6u/image/upload/v1772076139/New_Headshot_fsxpjh.jpg" alt="Kenneth Simmons">
+    </div>
+  </div>
+
+  <!-- IDENTITY -->
+  <div class="identity">
+    <div class="identity-logo">
+      <span class="praxis">Praxis</span> <span class="lab">Lab</span>
+    </div>
+    <div class="identity-studio">Innovation Studio</div>
+    <div class="identity-bio">
+      Practical AI software for education, compliance & operations.<br>
+      Founded by Kenneth Simmons · Atlanta, GA
+    </div>
+    <div class="identity-divider"></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Live Products</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Yrs Enterprise</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">First Studio</div>
+    </div>
+  </div>
+
+  <!-- VENTURES -->
+  <div class="sec" style="animation-delay:0.23s">
+    <div class="sec-line"></div>
+    <div class="sec-dot"></div>
+    <div class="sec-label">Our Products</div>
+    <div class="sec-dot"></div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="ventures">
+    <a href="https://praxislab.co" target="_blank" rel="noopener" class="vc featured" style="animation-delay:0.24s">
+      <div class="vc-icon">🔬</div>
+      <div class="vc-body">
+        <div class="vc-name">Praxis Lab</div>
+        <div class="vc-desc">AI-powered vertical SaaS innovation studio</div>
+        <div class="vc-domain">praxislab.co</div>
+      </div>
+      <span class="vc-badge live">Live</span>
+      <span class="vc-arrow">→</span>
+    </a>
+    <a href="https://www.myverso.co" target="_blank" rel="noopener" class="vc" style="animation-delay:0.26s">
+      <div class="vc-icon">⚡</div>
+      <div class="vc-body">
+        <div class="vc-name">Verso</div>
+        <div class="vc-desc">Premium profile pages for athletes & creators</div>
+        <div class="vc-domain">myverso.co</div>
+      </div>
+      <span class="vc-badge live">Live</span>
+      <span class="vc-arrow">→</span>
+    </a>
+    <a href="https://myrecruitiq.com" target="_blank" rel="noopener" class="vc" style="animation-delay:0.28s">
+      <div class="vc-icon">🎓</div>
+      <div class="vc-body">
+        <div class="vc-name">RecruitIQ</div>
+        <div class="vc-desc">AI-powered college athletic recruiting platform</div>
+        <div class="vc-domain">myrecruitiq.com</div>
+      </div>
+      <span class="vc-badge live">Live</span>
+      <span class="vc-arrow">→</span>
+    </a>
+    <a href="https://fundediq.app" target="_blank" rel="noopener" class="vc" style="animation-delay:0.30s">
+      <div class="vc-icon">💰</div>
+      <div class="vc-body">
+        <div class="vc-name">FundedIQ</div>
+        <div class="vc-desc">Intelligent funding & financial intelligence</div>
+        <div class="vc-domain">fundediq.app</div>
+      </div>
+      <span class="vc-badge live">Live</span>
+      <span class="vc-arrow">→</span>
+    </a>
+    <a href="https://disclosureflow.com" target="_blank" rel="noopener" class="vc" style="animation-delay:0.32s">
+      <div class="vc-icon">📋</div>
+      <div class="vc-body">
+        <div class="vc-name">DisclosureFlow</div>
+        <div class="vc-desc">Federal lobbying compliance, simplified</div>
+        <div class="vc-domain">disclosureflow.com</div>
+      </div>
+      <span class="vc-badge live">Live</span>
+      <span class="vc-arrow">→</span>
+    </a>
+    <a href="https://residencyfit.com" target="_blank" rel="noopener" class="vc" style="animation-delay:0.34s">
+      <div class="vc-icon">🩺</div>
+      <div class="vc-body">
+        <div class="vc-name">ResidencyFit</div>
+        <div class="vc-desc">Medical residency matching & preparation</div>
+        <div class="vc-domain">residencyfit.com</div>
+      </div>
+      <span class="vc-badge building">Building</span>
+      <span class="vc-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- CONSULTING -->
+  <div class="sec" style="animation-delay:0.27s">
+    <div class="sec-line"></div>
+    <div class="sec-dot"></div>
+    <div class="sec-label">Consulting Services</div>
+    <div class="sec-dot"></div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="consult-grid">
+    <div class="cc">
+      <div class="cc-icon">🤖</div>
+      <div class="cc-title">AI Strategy & Integration</div>
+      <div class="cc-desc">Find where AI creates real leverage in your business</div>
+    </div>
+    <div class="cc">
+      <div class="cc-icon">🏗️</div>
+      <div class="cc-title">Product Development</div>
+      <div class="cc-desc">SaaS architecture, roadmaps & MVP execution</div>
+    </div>
+    <div class="cc">
+      <div class="cc-icon">⚙️</div>
+      <div class="cc-title">Operations & ERP</div>
+      <div class="cc-desc">Enterprise systems, Oracle EBS & digital transformation</div>
+    </div>
+    <div class="cc">
+      <div class="cc-icon">🚀</div>
+      <div class="cc-title">Startup Advisory</div>
+      <div class="cc-desc">Go-to-market, fundraising & scaling from zero</div>
+    </div>
+  </div>
+
+  <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="consult-cta">
+    📅 Book a Meeting with Kenneth →
+  </a>
+
+  <!-- CONNECT -->
+  <div class="sec" style="animation-delay:0.33s">
+    <div class="sec-line"></div>
+    <div class="sec-dot"></div>
+    <div class="sec-label">Connect</div>
+    <div class="sec-dot"></div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="links">
+    <a href="https://www.instagram.com/iamkensimmons/" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">📸</div>
+      <div class="lc-body">
+        <div class="lc-title">@iamkensimmons</div>
+        <div class="lc-sub">Follow on Instagram</div>
+      </div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://x.com/iamkensimmons" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">
+        <svg viewBox="0 0 24 24" fill="#1d3154" width="22" height="22" style="vertical-align:middle"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+      <div class="lc-body">
+        <div class="lc-title">@iamkensimmons</div>
+        <div class="lc-sub">Follow on X</div>
+      </div>
+      <span class="lc-arrow">→</span>
+    </a>
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" target="_blank" rel="noopener" class="lc">
+      <div class="lc-icon">📅</div>
+      <div class="lc-body">
+        <div class="lc-title">Book a Meeting</div>
+        <div class="lc-sub">Schedule time via Calendly</div>
+      </div>
+      <span class="lc-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <a href="https://www.instagram.com/iamkensimmons/" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://x.com/iamkensimmons" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://praxislab.co" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+    </a>
+    <a href="https://calendly.com/kenneth-myrecruitiq/executive-overview" class="sb" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </a>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-bar">
+    <button class="share-btn" onclick="openShare()">
+      <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      Share This Page
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">Built with <a href="https://www.myverso.co" target="_blank">Verso</a> · © 2025 Praxis Lab</div>
+  </div>
+
+</div>
+
+<!-- SHARE SHEET -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+  <div class="share-sheet">
+    <div class="share-handle"></div>
+    <div class="share-title">Share Praxis Lab</div>
+    <div class="share-url" onclick="copyLink()">
+      <span>myverso.page/praxislab</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    </div>
+    <div class="share-grid">
+      <a href="#" onclick="shareX(event)" class="share-option">
+        <div class="share-icon" style="background:#000;border:1px solid #e5e7eb">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <span>X / Twitter</span>
+      </a>
+      <a href="#" onclick="shareFB(event)" class="share-option">
+        <div class="share-icon" style="background:#1877F2">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <span>Facebook</span>
+      </a>
+      <a href="#" onclick="shareWA(event)" class="share-option">
+        <div class="share-icon" style="background:#25D366">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" onclick="shareMsg(event)" class="share-option">
+        <div class="share-icon" style="background:#34C759">
+          <svg viewBox="0 0 24 24" fill="#fff" width="20" height="20"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+        </div>
+        <span>Message</span>
+      </a>
+      <a href="#" onclick="shareEmail(event)" class="share-option">
+        <div class="share-icon" style="background:var(--teal-dim);border:1px solid var(--teal-bd)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#75af9b" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span>Email</span>
+      </a>
+      <a href="#" onclick="copyLink(event)" class="share-option">
+        <div class="share-icon" style="background:var(--bg-card2);border:1px solid var(--border)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8c8f8f" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <span>Copy Link</span>
+      </a>
+      <a href="#" onclick="shareMore(event)" class="share-option">
+        <div class="share-icon" style="background:var(--teal-dim);border:1px solid var(--teal-bd)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#75af9b" stroke-width="2" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <span>More Apps</span>
+      </a>
+    </div>
+    <button class="share-close" onclick="closeShare()">Cancel</button>
+  </div>
+</div>
+
+<div class="share-toast" id="shareToast"></div>
+
+<script>
+  var PAGE_URL   = 'https://myverso.page/praxislab';
+  var PAGE_TITLE = 'Praxis Lab — AI Innovation Studio';
+  var SHARE_TEXT = 'Check out Praxis Lab by Kenneth Simmons ⚡';
+
+  function openShare() { document.getElementById('shareOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeShare(e) {
+    if (!e || e.target.id === 'shareOverlay' || e.target.closest('.share-close')) {
+      document.getElementById('shareOverlay').classList.remove('open'); document.body.style.overflow = '';
+    }
+  }
+  function shareX(e) { e.preventDefault(); window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT + ' ' + PAGE_URL), '_blank', 'width=600,height=400'); closeShare(); }
+  function shareFB(e) { e.preventDefault(); window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(PAGE_URL), '_blank', 'width=600,height=400'); closeShare(); }
+  function shareWA(e) { e.preventDefault(); window.open('https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL), '_blank'); closeShare(); }
+  function shareMsg(e) { e.preventDefault(); window.location.href = 'sms:?&body=' + encodeURIComponent(SHARE_TEXT + '\n' + PAGE_URL); closeShare(); }
+  function shareEmail(e) { e.preventDefault(); window.location.href = 'mailto:?subject=' + encodeURIComponent(PAGE_TITLE) + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + PAGE_URL); closeShare(); }
+  function copyLink(e) {
+    if (e) e.preventDefault();
+    var fallback = function() { var ta = document.createElement('textarea'); ta.value = PAGE_URL; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast('✓ Link copied!'); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(PAGE_URL).then(function() { showToast('✓ Link copied!'); }).catch(fallback); } else { fallback(); }
+    closeShare();
+  }
+  function shareMore(e) {
+    e.preventDefault();
+    if (navigator.share) { closeShare(); navigator.share({ title: PAGE_TITLE, text: SHARE_TEXT, url: PAGE_URL }).catch(function(err) { if (err.name !== 'AbortError') openShare(); }); } else { copyLink(e); }
+  }
+  function showToast(msg) { var t = document.getElementById('shareToast'); t.textContent = msg; t.classList.add('visible'); setTimeout(function() { t.classList.remove('visible'); }, 2400); }
+</script>
+
+</body>
+</html>
