@@ -73,6 +73,7 @@
     width: 180%; height: 180%;
     transform: translate(-50%, -50%);
   }
+  .hero-video-wrap stream,
   .hero-video-wrap iframe {
     position: absolute;
     top: 0; left: 0;
@@ -372,6 +373,7 @@
 
   @media (hover: none) { .link-arrow { opacity: 1; transform: translateX(0); } .link-card:active { transform: scale(0.98); } .cta-btn:active { transform: scale(0.98); } }
 </style>
+<script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
 </head>
 <body>
 
@@ -383,8 +385,9 @@
   <div class="hero-video">
     <div class="hero-video-wrap">
       <iframe id="heroVideo"
-        src="https://customer-olrmmini3k2aifhv.cloudflarestream.com/f90b68e1082d3b35809058ce2477425f/iframe?loop=true&autoplay=true&muted=true&controls=false&poster=https%3A%2F%2Fcustomer-olrmmini3k2aifhv.cloudflarestream.com%2Ff90b68e1082d3b35809058ce2477425f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+        src="https://customer-olrmmini3k2aifhv.cloudflarestream.com/f90b68e1082d3b35809058ce2477425f/iframe?muted=true&preload=true&loop=true&autoplay=true&controls=false&poster=https%3A%2F%2Fcustomer-olrmmini3k2aifhv.cloudflarestream.com%2Ff90b68e1082d3b35809058ce2477425f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
         loading="lazy"
+        style="border:none;"
         allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
         allowfullscreen="true">
       </iframe>
@@ -561,25 +564,19 @@
 </div>
 
 <script>
-  /* ═══ MUTE/UNMUTE — Cloudflare Stream ═══ */
-  var isMuted = true;
+  /* ═══ MUTE/UNMUTE — Cloudflare Stream SDK ═══ */
   function toggleMute() {
-    var btn = document.getElementById('unmuteBtn');
     var iframe = document.getElementById('heroVideo');
-    isMuted = !isMuted;
-    if (isMuted) {
+    var player = Stream(iframe);
+    var btn = document.getElementById('unmuteBtn');
+
+    player.muted = !player.muted;
+
+    if (player.muted) {
       btn.classList.remove('active');
     } else {
       btn.classList.add('active');
     }
-    /* Swap iframe src to toggle muted param */
-    var src = iframe.src;
-    if (isMuted) {
-      src = src.replace('muted=false', 'muted=true');
-    } else {
-      src = src.replace('muted=true', 'muted=false');
-    }
-    iframe.src = src;
   }
 
   /* ═══ SHARE FUNCTIONS ═══ */
