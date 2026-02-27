@@ -73,12 +73,11 @@
     width: 180%; height: 180%;
     transform: translate(-50%, -50%);
   }
-  .hero-video-wrap stream,
-  .hero-video-wrap iframe {
+  .hero-video-wrap video {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    border: none;
+    object-fit: cover;
     pointer-events: none;
   }
   .hero-video-overlay {
@@ -373,7 +372,6 @@
 
   @media (hover: none) { .link-arrow { opacity: 1; transform: translateX(0); } .link-card:active { transform: scale(0.98); } .cta-btn:active { transform: scale(0.98); } }
 </style>
-<script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
 </head>
 <body>
 
@@ -384,13 +382,10 @@
   <!-- HERO: Full-Screen Video Background -->
   <div class="hero-video">
     <div class="hero-video-wrap">
-      <iframe id="heroVideo"
-        src="https://customer-olrmmini3k2aifhv.cloudflarestream.com/f90b68e1082d3b35809058ce2477425f/iframe?muted=true&preload=true&loop=true&autoplay=true&controls=false&poster=https%3A%2F%2Fcustomer-olrmmini3k2aifhv.cloudflarestream.com%2Ff90b68e1082d3b35809058ce2477425f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
-        loading="lazy"
-        style="border:none;"
-        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-        allowfullscreen="true">
-      </iframe>
+      <video id="heroVideo" autoplay loop muted playsinline
+        poster="https://customer-olrmmini3k2aifhv.cloudflarestream.com/f90b68e1082d3b35809058ce2477425f/thumbnails/thumbnail.jpg?height=600">
+        <source src="https://customer-olrmmini3k2aifhv.cloudflarestream.com/f90b68e1082d3b35809058ce2477425f/downloads/default.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero-video-overlay"></div>
     <button class="unmute-btn" id="unmuteBtn" onclick="toggleMute()">
@@ -564,15 +559,14 @@
 </div>
 
 <script>
-  /* ═══ MUTE/UNMUTE — Cloudflare Stream SDK ═══ */
+  /* ═══ MUTE/UNMUTE — Native Video API ═══ */
   function toggleMute() {
-    var iframe = document.getElementById('heroVideo');
-    var player = Stream(iframe);
+    var video = document.getElementById('heroVideo');
     var btn = document.getElementById('unmuteBtn');
 
-    player.muted = !player.muted;
+    video.muted = !video.muted;
 
-    if (player.muted) {
+    if (video.muted) {
       btn.classList.remove('active');
     } else {
       btn.classList.add('active');
