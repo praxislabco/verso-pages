@@ -332,6 +332,40 @@ body::before{
 .d10{animation-delay:.5s}.d11{animation-delay:.55s}.d12{animation-delay:.6s}
 
 @media(max-width:480px){.page{padding:0 12px 32px}}
+/* ═══ SCHEDULE ═══ */
+.schedule{display:flex;flex-direction:column;gap:8px;width:100%}
+.game-card{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;
+  background:var(--surface);border:1px solid rgba(255,255,255,.04);
+  border-radius:14px;text-decoration:none;color:var(--text);
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.game-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--gold),#c89a1a);
+  opacity:0;transition:opacity .3s;
+}
+.game-card.home::before{opacity:1}
+.game-card:hover{border-color:var(--gold-border);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.game-card:hover::before{opacity:1}
+.game-card.bye{opacity:.45;pointer-events:none}
+.game-date{text-align:center;min-width:44px;flex-shrink:0}
+.game-date-month{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.game-date-day{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--text);line-height:1.1}
+.game-divider{width:1px;height:38px;background:rgba(255,255,255,.07);flex-shrink:0}
+.game-info{flex:1;min-width:0}
+.game-vs{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text3)}
+.game-opponent{font-size:14px;font-weight:700;color:var(--text);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game-location{font-size:10px;color:var(--text3);margin-top:2px}
+.game-badge{
+  flex-shrink:0;padding:4px 8px;border-radius:6px;
+  font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+}
+.game-badge.home{background:var(--gold-soft);color:var(--gold);border:1px solid var(--gold-border)}
+.game-badge.away{background:rgba(255,255,255,.04);color:var(--text3);border:1px solid rgba(255,255,255,.08)}
+.game-badge.hc{background:rgba(244,184,38,.15);color:var(--gold);border:1px solid rgba(244,184,38,.35)}
+.game-badge.playoff{background:rgba(255,80,80,.08);color:#ff8080;border:1px solid rgba(255,80,80,.2)}
 </style>
 </head>
 <body>
@@ -532,6 +566,190 @@ body::before{
       </div>
       <div class="link-arrow">→</div>
     </a>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="divider a d9">
+    <div class="divider-line"></div>
+    <div class="divider-icon">✦</div>
+    <div class="divider-label">2026 Season Schedule</div>
+    <div class="divider-icon">✦</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="schedule a d9">
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">Aug</div>
+        <div class="game-date-day">29</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">at</div>
+        <div class="game-opponent">Livingstone College</div>
+        <div class="game-location">Salisbury, N.C. · Time TBA</div>
+      </div>
+      <div class="game-badge away">Away</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card home">
+      <div class="game-date">
+        <div class="game-date-month">Sep</div>
+        <div class="game-date-day">5</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">vs</div>
+        <div class="game-opponent">Florida Memorial University</div>
+        <div class="game-location">Columbia, S.C. · Allen University · Time TBA</div>
+      </div>
+      <div class="game-badge home">Home Opener</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">Sep</div>
+        <div class="game-date-day">12</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">at</div>
+        <div class="game-opponent">Lane College</div>
+        <div class="game-location">Jackson, T.N. · Time TBA</div>
+      </div>
+      <div class="game-badge away">Away</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card home">
+      <div class="game-date">
+        <div class="game-date-month">Sep</div>
+        <div class="game-date-day">19</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">vs</div>
+        <div class="game-opponent">Albany State University</div>
+        <div class="game-location">Columbia, S.C. · Allen University · Time TBA</div>
+      </div>
+      <div class="game-badge home">Home</div>
+    </a>
+
+    <div class="game-card bye">
+      <div class="game-date">
+        <div class="game-date-month">Sep</div>
+        <div class="game-date-day">26</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">—</div>
+        <div class="game-opponent">Bye Week</div>
+        <div class="game-location">No game</div>
+      </div>
+    </div>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">Oct</div>
+        <div class="game-date-day">3</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">at</div>
+        <div class="game-opponent">Savannah State University</div>
+        <div class="game-location">Savannah, G.A. · Time TBA</div>
+      </div>
+      <div class="game-badge away">Away</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card home">
+      <div class="game-date">
+        <div class="game-date-month">Oct</div>
+        <div class="game-date-day">10</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">vs</div>
+        <div class="game-opponent">Benedict College</div>
+        <div class="game-location">Columbia, S.C. · Allen University · Time TBA</div>
+      </div>
+      <div class="game-badge home">Home</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">Oct</div>
+        <div class="game-date-day">17</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">at</div>
+        <div class="game-opponent">Clark Atlanta University</div>
+        <div class="game-location">Atlanta, G.A. · Time TBA</div>
+      </div>
+      <div class="game-badge away">Away</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card home">
+      <div class="game-date">
+        <div class="game-date-month">Oct</div>
+        <div class="game-date-day">24</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">vs</div>
+        <div class="game-opponent">Tuskegee University</div>
+        <div class="game-location">Columbia, S.C. · Allen University · Time TBA</div>
+      </div>
+      <div class="game-badge home">Home</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card home">
+      <div class="game-date">
+        <div class="game-date-month">Oct</div>
+        <div class="game-date-day">31</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">vs</div>
+        <div class="game-opponent">Morehouse College</div>
+        <div class="game-location">Columbia, S.C. · Allen University · Time TBA</div>
+      </div>
+      <div class="game-badge hc">🎉 Homecoming</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">Nov</div>
+        <div class="game-date-day">7</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">at</div>
+        <div class="game-opponent">Edward Waters College</div>
+        <div class="game-location">Jacksonville, F.L. · Time TBA</div>
+      </div>
+      <div class="game-badge away">Away</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card">
+      <div class="game-date">
+        <div class="game-date-month">TBA</div>
+        <div class="game-date-day" style="font-size:14px;line-height:1.6;">—</div>
+      </div>
+      <div class="game-divider"></div>
+      <div class="game-info">
+        <div class="game-vs">SIAC</div>
+        <div class="game-opponent">Football Playoffs</div>
+        <div class="game-location">Date & location TBA</div>
+      </div>
+      <div class="game-badge playoff">Playoffs</div>
+    </a>
+
+    <a href="https://auyellowjackets.com/sports/football" target="_blank" class="game-card" style="justify-content:center;padding:12px;">
+      <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;">View Official Schedule →</div>
+    </a>
+
   </div>
 
   <!-- FAITH SECTION -->
